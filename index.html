@@ -110,7 +110,14 @@
     <main>
         <header>
             <div class="search-wrapper">
-                <input type="text" placeholder="全网搜索，回车直达..." onkeydown="if(event.keyCode==13) window.open('https://www.baidu.com/s?wd='+encodeURIComponent(this.value))">
+                <select id="engineSelect" style="border:none; outline:none; background:transparent; font-size:0.9em; color:#64748b; cursor:pointer; margin-right:10px;">
+                    <option value="baidu">百度</option>
+                    <option value="google">Google</option>
+                    <option value="bing">必应</option>
+                    <option value="github">GitHub</option>
+                </select>
+                <div style="width:1px; height:20px; background:#e2e8f0; margin-right:15px;"></div>
+                <input type="text" id="searchInput" placeholder="万能搜索..." onkeydown="if(event.keyCode==13) doUnifiedSearch()">
             </div>
             <div id="time" style="color: #94a3b8; font-weight: 600;">00:00:00</div>
         </header>
@@ -194,6 +201,20 @@
     </main>
 
     <script>
+        function doUnifiedSearch() {
+            const q = document.getElementById('searchInput').value;
+            const engine = document.getElementById('engineSelect').value;
+            if (!q) return;
+            
+            const urls = {
+                baidu: 'https://www.baidu.com/s?wd=',
+                google: 'https://www.google.com/search?q=',
+                bing: 'https://www.bing.com/search?q=',
+                github: 'https://github.com/search?q='
+            };
+            window.open(urls[engine] + encodeURIComponent(q));
+        }
+
         function updateTime() {
             const now = new Date();
             document.getElementById('time').textContent = now.toLocaleTimeString('zh-CN', { hour12: false });
