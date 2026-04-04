@@ -7,6 +7,7 @@
     <meta name="description" content="dh.790221.xyz - 一个会自我进化的全能综合导航站。提供每日自动更新的高清电视直播源(m3u8)、精选AI工具、云服务器管理、资源搜索等一站式链接，极致纯净，秒开体验。">
     <meta name="keywords" content="AI导航, 电视直播源, CCTV直播, 港台直播, m3u8下载, 云服务器管理, VPS论坛, 资源搜索, 极简主页">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         :root {
             --sidebar-bg: #121212;
@@ -90,9 +91,41 @@
         .card-premium { background: linear-gradient(135deg, #fff 0%, #fffbf2 100%); border: 1px solid #fde68a; }
 
         @media (max-width: 900px) { aside { display: none; } main { margin-left: 0; padding: 20px; } .search-wrapper { width: 100%; } }
+        /* 悬浮播放器 */
+        #player-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 360px;
+            background: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            z-index: 2000;
+            display: none;
+            border: 1px solid var(--accent);
+        }
+        #player-header {
+            padding: 10px 15px;
+            background: var(--sidebar-bg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85em;
+            color: #fff;
+        }
+        video { width: 100%; aspect-ratio: 16/9; display: block; }
     </style>
 </head>
 <body>
+    <!-- 播放器 HTML -->
+    <div id="player-container">
+        <div id="player-header">
+            <span id="playing-name">正在播放...</span>
+            <span style="cursor:pointer; font-size:1.2em;" onclick="closePlayer()">×</span>
+        </div>
+        <video id="video" controls autoplay></video>
+    </div>
     <aside>
         <div class="logo-area"><div class="logo-dot"></div><span>科技 HUB</span></div>
         <ul class="nav-list">
@@ -123,22 +156,16 @@
         </header>
 
         <section id="tv">
-            <div class="section-title">📺 电视直播源 (精品秒开)</div>
-            <div class="grid">
+            <div class="section-title">📺 电视直播源 (点击频道在线试看)</div>
+            <div class="grid" id="tv-grid">
                 <a href="tv.m3u" download class="card card-premium">
                     <div class="card-icon">📥</div>
                     <div class="card-info">
                         <div class="card-name">下载 M3U 列表</div>
-                        <div class="card-desc">全系列 CCTV 与港台高清源</div>
+                        <div class="card-desc">同步至 PotPlayer/VLC 观看</div>
                     </div>
                 </a>
-                <a href="https://www.yangshipin.cn/" target="_blank" class="card">
-                    <div class="card-icon">🇨🇳</div>
-                    <div class="card-info">
-                        <div class="card-name">央视频官方</div>
-                        <div class="card-desc">官方高清直播入口</div>
-                    </div>
-                </a>
+                <!-- 动态生成的频道卡片将放在这里 -->
             </div>
         </section>
 
@@ -201,6 +228,66 @@
     </main>
 
     <script>
+        // 直播播放逻辑
+        let hls = null;
+        function playLive(name, url) {
+            const container = document.getElementById('player-container');
+            const video = document.getElementById('video');
+            const nameEl = document.getElementById('playing-name');
+            
+            container.style.display = 'block';
+            nameEl.textContent = '正在直播: ' + name;
+
+            if (hls) { hls.destroy(); }
+
+            if (Hls.isSupported()) {
+                hls = new Hls();
+                hls.loadSource(url);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = url;
+                video.addEventListener('loadedmetadata', () => video.play());
+            }
+        }
+
+        function closePlayer() {
+            document.getElementById('player-container').style.display = 'none';
+            document.getElementById('video').pause();
+        }
+
+        // 自动解析 M3U 并生成频道按钮
+        async function loadTV() {
+            try {
+                const response = await fetch('tv.m3u');
+                const data = await response.text();
+                const lines = data.split('\n');
+                const grid = document.getElementById('tv-grid');
+                
+                let currentName = '';
+                for (let line of lines) {
+                    if (line.includes('#EXTINF')) {
+                        currentName = line.split(',')[1].trim();
+                    } else if (line.startsWith('http')) {
+                        const url = line.trim();
+                        const card = document.createElement('div');
+                        card.className = 'card';
+                        card.style.cursor = 'pointer';
+                        card.onclick = () => playLive(currentName, url);
+                        card.innerHTML = `
+                            <div class="card-icon">📺</div>
+                            <div class="card-info">
+                                <div class="card-name">${currentName}</div>
+                                <div class="card-desc">点击立即在线试看</div>
+                            </div>
+                        `;
+                        grid.appendChild(card);
+                    }
+                }
+            } catch (e) { console.error('加载直播源失败'); }
+        }
+        loadTV();
+
         function doUnifiedSearch() {
             const q = document.getElementById('searchInput').value;
             const engine = document.getElementById('engineSelect').value;
