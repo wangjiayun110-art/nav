@@ -3,460 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的导航 - 上网从这里开始</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
+    <title>AI 聚合导航 - 探索智能新世界</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
             min-height: 100vh;
             color: #fff;
+            padding-bottom: 50px;
         }
         
         /* 顶部栏 */
         .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.3);
-            backdrop-filter: blur(20px);
-            padding: 15px 30px;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(15px);
+            padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid rgba(0,217,255,0.2);
+            position: sticky;
+            top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
         .logo {
-            font-size: 1.5em;
-            font-weight: bold;
-            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            font-size: 1.8em;
+            font-weight: 800;
+            background: linear-gradient(90deg, #00d9ff, #00ff88, #ff00ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
         }
         
-        .time-weather {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            font-size: 0.95em;
-            color: rgba(255,255,255,0.8);
-        }
-        
-        /* 主内容 */
-        .main {
-            padding: 100px 40px 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        /* 搜索框 */
-        .search-section {
-            text-align: center;
-            margin: 40px 0 60px;
-        }
-        
-        .search-title {
-            font-size: 2.2em;
-            margin-bottom: 30px;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
-        }
-        
-        .search-box {
-            display: flex;
-            max-width: 700px;
-            margin: 0 auto;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50px;
-            padding: 5px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .search-box input {
-            flex: 1;
-            padding: 18px 30px;
+        .time-box {
+            font-family: 'Courier New', Courier, monospace;
             font-size: 1.1em;
-            border: none;
-            background: transparent;
-            color: #fff;
-            outline: none;
-        }
-        
-        .search-box input::placeholder {
-            color: rgba(255,255,255,0.5);
-        }
-        
-        .search-box button {
-            padding: 18px 40px;
-            font-size: 1.1em;
-            border: none;
-            border-radius: 50px;
-            background: linear-gradient(90deg, #00d9ff, #00ff88);
-            color: #000;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .search-box button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(0,217,255,0.4);
-        }
-        
-        .engines {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .engines span {
-            padding: 8px 18px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            font-size: 0.9em;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 1px solid transparent;
-        }
-        
-        .engines span:hover {
-            background: rgba(255,255,255,0.2);
-        }
-        
-        .engines span.active {
-            background: rgba(0,217,255,0.3);
-            border-color: #00d9ff;
-        }
-        
-        /* 快捷操作 */
-        .quick-actions {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-        
-        .quick-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 25px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 25px;
-            color: #fff;
-            text-decoration: none;
-            transition: all 0.3s;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .quick-btn:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-3px);
-        }
-        
-        /* 分类 */
-        .section {
-            margin: 50px 0;
-        }
-        
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-        
-        .section-title {
-            font-size: 1.3em;
             color: #00d9ff;
         }
         
-        .section-line {
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, rgba(0,217,255,0.5), transparent);
+        /* 主内容 */
+        .container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
         
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-            gap: 15px;
+        /* 分类区块 */
+        .section {
+            margin-bottom: 60px;
+            animation: fadeIn 0.8s ease-out;
         }
         
-        .card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 25px 15px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            text-decoration: none;
-            color: #fff;
-            transition: all 0.3s;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .card:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(0,217,255,0.3);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        
-        .card .icon {
-            font-size: 2.2em;
-            margin-bottom: 12px;
-        }
-        
-        .card .name {
-            font-size: 0.95em;
-            text-align: center;
-        }
-        
-        /* 页脚 */
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: rgba(255,255,255,0.5);
-            font-size: 0.9em;
-        }
-        
-        /* 响应式 */
-        @media (max-width: 768px) {
-            .header { padding: 10px 20px; }
-            .logo { font-size: 1.2em; }
-            .time-weather { display: none; }
-            .main { padding: 80px 20px 20px; }
-            .search-title { font-size: 1.5em; }
-            .search-box input { padding: 15px 20px; }
-            .search-box button { padding: 15px 25px; }
-            .grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
-            .card { padding: 20px 10px; }
-            .card .icon { font-size: 1.8em; }
-        }
-        
-        /* 动画 */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .section { animation: fadeIn 0.5s ease-out; }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.6em;
+            color: #00d9ff;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        .section-line {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(0,217,255,0.5), transparent);
+        }
+        
+        /* 卡片网格 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 25px 20px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .card:hover {
+            background: rgba(0,217,255,0.1);
+            border-color: #00d9ff;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,217,255,0.3);
+        }
+        
+        .card .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover .icon {
+            transform: scale(1.2);
+        }
+        
+        .card .name {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .card .desc {
+            font-size: 0.85em;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.4;
+        }
+        
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.9em;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .header { padding: 15px 20px; }
+            .logo { font-size: 1.4em; }
+            .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+            .card { padding: 20px 15px; }
+            .card .icon { font-size: 2.2em; }
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="logo">🧭 我的导航</div>
-        <div class="time-weather">
-            <span id="time"></span>
-            <span id="date"></span>
-        </div>
-    </div>
+    <header class="header">
+        <div class="logo">🧠 AI HUB NAVIGATION</div>
+        <div class="time-box" id="time"></div>
+    </header>
     
-    <div class="main">
-        <div class="search-section">
-            <h1 class="search-title">快速搜索，一键直达</h1>
-            <form class="search-box" onsubmit="return search()">
-                <input type="text" id="q" placeholder="搜索网页、视频、图片、新闻..." autofocus>
-                <button type="submit">搜索</button>
-            </form>
-            <div class="engines">
-                <span class="active" onclick="setEngine('baidu')">百度</span>
-                <span onclick="setEngine('google')">Google</span>
-                <span onclick="setEngine('bing')">Bing</span>
-                <span onclick="setEngine('zhihu')">知乎</span>
-                <span onclick="setEngine('bilibili')">B站</span>
-                <span onclick="setEngine('taobao')">淘宝</span>
-                <span onclick="setEngine('weibo')">微博</span>
-            </div>
-        </div>
-        
-        <div class="quick-actions">
-            <a href="https://mail.qq.com" target="_blank" class="quick-btn">📧 邮箱</a>
-            <a href="https://wx.qq.com" target="_blank" class="quick-btn">💬 微信</a>
-            <a href="https://github.com" target="_blank" class="quick-btn">💻 GitHub</a>
-            <a href="https://chat.openai.com" target="_blank" class="quick-btn">🤖 ChatGPT</a>
-        </div>
-        
+    <main class="container">
+        <!-- 语言模型板块 -->
         <div class="section">
             <div class="section-header">
-                <span class="section-title">⭐ 常用网站</span>
+                <span class="section-title">💬 语言大模型 (LLMs)</span>
                 <span class="section-line"></span>
             </div>
-            <div class="grid" id="common"></div>
-        </div>
-        
-        <div class="section">
-            <div class="section-header">
-                <span class="section-title">🎬 视频娱乐</span>
-                <span class="section-line"></span>
-            </div>
-            <div class="grid" id="video"></div>
-        </div>
-        
-        <div class="section">
-            <div class="section-header">
-                <span class="section-title">📱 社交媒体</span>
-                <span class="section-line"></span>
-            </div>
-            <div class="grid" id="social"></div>
-        </div>
-        
-        <div class="section">
-            <div class="section-header">
-                <span class="section-title">🛠️ 常用工具</span>
-                <span class="section-line"></span>
-            </div>
-            <div class="grid" id="tools"></div>
-        </div>
-        
-        <div class="section">
-            <div class="section-header">
-                <span class="section-title">🤖 AI 助手</span>
-                <span class="section-line"></span>
-            </div>
-            <div class="grid" id="ai"></div>
-        </div>
-        
-        <div class="section">
-            <div class="section-header">
-                <span class="section-title">📰 新闻资讯</span>
-                <span class="section-line"></span>
-            </div>
-            <div class="grid" id="news"></div>
-        </div>
-        
-        <div class="footer">
-            <p>📚 收藏本页，上网更方便 | 按 Ctrl+D 收藏</p>
-        </div>
-    </div>
-    
-    <script>
-        let engine = 'baidu';
-        const engines = {
-            baidu: 'https://www.baidu.com/s?wd=',
-            google: 'https://www.google.com/search?q=',
-            bing: 'https://www.bing.com/search?q=',
-            zhihu: 'https://www.zhihu.com/search?q=',
-            bilibili: 'https://search.bilibili.com/all?keyword=',
-            taobao: 'https://s.taobao.com/search?q=',
-            weibo: 'https://s.weibo.com/weibo/'
-        };
-        
-        const sites = {
-            common: [
-                { name: '百度', icon: '🔍', url: 'https://www.baidu.com' },
-                { name: '淘宝', icon: '🛒', url: 'https://www.taobao.com' },
-                { name: '京东', icon: '📦', url: 'https://www.jd.com' },
-                { name: '拼多多', icon: '🔴', url: 'https://www.pinduoduo.com' },
-                { name: '微博', icon: '📱', url: 'https://weibo.com' },
-                { name: '知乎', icon: '💭', url: 'https://www.zhihu.com' },
-                { name: '豆瓣', icon: '📖', url: 'https://www.douban.com' },
-                { name: '美团', icon: '🍜', url: 'https://www.meituan.com' },
-            ],
-            video: [
-                { name: '哔哩哔哩', icon: '📺', url: 'https://www.bilibili.com' },
-                { name: '优酷', icon: '🎬', url: 'https://www.youku.com' },
-                { name: '爱奇艺', icon: '🎥', url: 'https://www.iqiyi.com' },
-                { name: '腾讯视频', icon: '📺', url: 'https://v.qq.com' },
-                { name: '芒果TV', icon: '🍎', url: 'https://www.mgtv.com' },
-                { name: '抖音', icon: '🎵', url: 'https://www.douyin.com' },
-                { name: '快手', icon: '⚡', url: 'https://www.kuaishou.com' },
-                { name: 'YouTube', icon: '▶️', url: 'https://www.youtube.com' },
-                { name: 'Netflix', icon: '🎬', url: 'https://www.netflix.com' },
-                { name: 'Twitch', icon: '🎮', url: 'https://www.twitch.tv' },
-            ],
-            social: [
-                { name: '微信', icon: '💬', url: 'https://wx.qq.com' },
-                { name: 'QQ', icon: '🐧', url: 'https://im.qq.com' },
-                { name: '小红书', icon: '📕', url: 'https://www.xiaohongshu.com' },
-                { name: 'Twitter', icon: '🐦', url: 'https://twitter.com' },
-                { name: 'Instagram', icon: '📷', url: 'https://www.instagram.com' },
-                { name: 'Discord', icon: '🎮', url: 'https://discord.com' },
-                { name: 'Telegram', icon: '✈️', url: 'https://telegram.org' },
-                { name: 'Facebook', icon: '👤', url: 'https://www.facebook.com' },
-            ],
-            tools: [
-                { name: 'GitHub', icon: '💻', url: 'https://github.com' },
-                { name: '百度网盘', icon: '💾', url: 'https://pan.baidu.com' },
-                { name: '阿里云盘', icon: '☁️', url: 'https://www.aliyundrive.com' },
-                { name: '腾讯文档', icon: '📝', url: 'https://docs.qq.com' },
-                { name: 'Notion', icon: '📓', url: 'https://www.notion.so' },
-                { name: 'ProcessOn', icon: '📊', url: 'https://www.processon.com' },
-                { name: '草料二维码', icon: '📱', url: 'https://cli.im' },
-                { name: 'TinyPNG', icon: '🖼️', url: 'https://tinypng.com' },
-            ],
-            ai: [
-                { name: 'ChatGPT', icon: '🤖', url: 'https://chat.openai.com' },
-                { name: 'Claude', icon: '🧠', url: 'https://claude.ai' },
-                { name: 'DeepSeek', icon: '🔮', url: 'https://chat.deepseek.com' },
-                { name: '通义千问', icon: '💬', url: 'https://tongyi.aliyun.com' },
-                { name: '文心一言', icon: '🖋️', url: 'https://yiyan.baidu.com' },
-                { name: 'Kimi', icon: '🌙', url: 'https://kimi.moonshot.cn' },
-                { name: 'Gemini', icon: '✨', url: 'https://gemini.google.com' },
-                { name: 'Midjourney', icon: '🎨', url: 'https://www.midjourney.com' },
-            ],
-            news: [
-                { name: '今日头条', icon: '📰', url: 'https://www.toutiao.com' },
-                { name: '腾讯新闻', icon: '📱', url: 'https://news.qq.com' },
-                { name: '新浪新闻', icon: '📰', url: 'https://news.sina.com.cn' },
-                { name: '网易新闻', icon: '📰', url: 'https://news.163.com' },
-                { name: '36氪', icon: '🚀', url: 'https://36kr.com' },
-                { name: '虎嗅', icon: '🐯', url: 'https://www.huxiu.com' },
-                { name: 'V2EX', icon: '💬', url: 'https://www.v2ex.com' },
-                { name: '少数派', icon: '📱', url: 'https://sspai.com' },
-            ]
-        };
-        
-        function setEngine(e) {
-            engine = e;
-            document.querySelectorAll('.engines span').forEach(s => s.classList.remove('active'));
-            event.target.classList.add('active');
-            document.getElementById('q').focus();
-        }
-        
-        function search() {
-            const q = document.getElementById('q').value.trim();
-            if (q) window.open(engines[engine] + encodeURIComponent(q), '_blank');
-            return false;
-        }
-        
-        function renderSites(id, data) {
-            document.getElementById(id).innerHTML = data.map(s => `
-                <a href="${s.url}" target="_blank" class="card">
-                    <span class="icon">${s.icon}</span>
-                    <span class="name">${s.name}</span>
+            <div class="grid">
+                <a href="https://chat.openai.com" target="_blank" class="card">
+                    <span class="icon">🤖</span>
+                    <span class="name">ChatGPT</span>
+                    <span class="desc">OpenAI 旗下的全能 AI 助手</span>
                 </a>
-            `).join('');
-        }
+                <a href="https://claude.ai" target="_blank" class="card">
+                    <span class="icon">🧠</span>
+                    <span class="name">Claude</span>
+                    <span class="desc">Anthropic 开发的高智能助手</span>
+                </a>
+                <a href="https://chat.deepseek.com" target="_blank" class="card">
+                    <span class="icon">🔮</span>
+                    <span class="name">DeepSeek</span>
+                    <span class="desc">国产最强开源大模型，编程极佳</span>
+                </a>
+                <a href="https://kimi.moonshot.cn" target="_blank" class="card">
+                    <span class="icon">🌙</span>
+                    <span class="name">Kimi</span>
+                    <span class="desc">月之暗面，超长上下文专家</span>
+                </a>
+                <a href="https://tongyi.aliyun.com" target="_blank" class="card">
+                    <span class="icon">☁️</span>
+                    <span class="name">通义千问</span>
+                    <span class="desc">阿里巴巴旗下的 AI 助手</span>
+                </a>
+                <a href="https://yiyan.baidu.com" target="_blank" class="card">
+                    <span class="icon">🖋️</span>
+                    <span class="name">文心一言</span>
+                    <span class="desc">百度推出的知识增强大模型</span>
+                </a>
+                <a href="https://gemini.google.com" target="_blank" class="card">
+                    <span class="icon">✨</span>
+                    <span class="name">Gemini</span>
+                    <span class="desc">Google 开发的多模态 AI</span>
+                </a>
+                <a href="https://perplexity.ai" target="_blank" class="card">
+                    <span class="icon">🔍</span>
+                    <span class="name">Perplexity</span>
+                    <span class="desc">基于 AI 的实时搜索引擎</span>
+                </a>
+                <a href="https://groq.com" target="_blank" class="card">
+                    <span class="icon">⚡</span>
+                    <span class="name">Groq</span>
+                    <span class="desc">极速推理，体验瞬间响应</span>
+                </a>
+                <a href="https://poe.com" target="_blank" class="card">
+                    <span class="icon">📲</span>
+                    <span class="name">Poe</span>
+                    <span class="desc">Quora 旗下的 AI 聚合平台</span>
+                </a>
+            </div>
+        </div>
         
+        <!-- 绘画与创意 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-title">🎨 绘画与图像创作</span>
+                <span class="section-line"></span>
+            </div>
+            <div class="grid">
+                <a href="https://www.midjourney.com" target="_blank" class="card">
+                    <span class="icon">🖼️</span>
+                    <span class="name">Midjourney</span>
+                    <span class="desc">艺术级 AI 绘画工具</span>
+                </a>
+                <a href="https://stable-diffusion-art.com" target="_blank" class="card">
+                    <span class="icon">🌀</span>
+                    <span class="name">Stable Diffusion</span>
+                    <span class="desc">开源本地化部署绘画神器</span>
+                </a>
+                <a href="https://www.canva.com/ai-image-generator/" target="_blank" class="card">
+                    <span class="icon">🖌️</span>
+                    <span class="name">Canva Magic</span>
+                    <span class="desc">设计平台集成 AI 创作</span>
+                </a>
+                <a href="https://lexica.art" target="_blank" class="card">
+                    <span class="icon">📷</span>
+                    <span class="name">Lexica</span>
+                    <span class="desc">SD 提示词与图像搜索引擎</span>
+                </a>
+                <a href="https://leonardo.ai" target="_blank" class="card">
+                    <span class="icon">🦁</span>
+                    <span class="name">Leonardo.ai</span>
+                    <span class="desc">全能型 AI 图像创作平台</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- 视频与音频 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-title">🎥 视频与音频生成</span>
+                <span class="section-line"></span>
+            </div>
+            <div class="grid">
+                <a href="https://sora.com" target="_blank" class="card">
+                    <span class="icon">🍿</span>
+                    <span class="name">OpenAI Sora</span>
+                    <span class="desc">震撼世界的文生视频大模型</span>
+                </a>
+                <a href="https://runwayml.com" target="_blank" class="card">
+                    <span class="icon">📽️</span>
+                    <span class="name">Runway Gen-2</span>
+                    <span class="desc">专业的 AI 视频生成工具</span>
+                </a>
+                <a href="https://suno.com" target="_blank" class="card">
+                    <span class="icon">🎵</span>
+                    <span class="name">Suno AI</span>
+                    <span class="desc">AI 音乐创作，人人都是作曲家</span>
+                </a>
+                <a href="https://udio.com" target="_blank" class="card">
+                    <span class="icon">🎼</span>
+                    <span class="name">Udio</span>
+                    <span class="desc">高保真音乐生成平台</span>
+                </a>
+                <a href="https://pika.art" target="_blank" class="card">
+                    <span class="icon">🎭</span>
+                    <span class="name">Pika Labs</span>
+                    <span class="desc">电影感十足的 AI 视频创作</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- 生产力工具 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-title">🚀 生产力与开发</span>
+                <span class="section-line"></span>
+            </div>
+            <div class="grid">
+                <a href="https://github.com/features/copilot" target="_blank" class="card">
+                    <span class="icon">💻</span>
+                    <span class="name">GitHub Copilot</span>
+                    <span class="desc">AI 结对编程助手</span>
+                </a>
+                <a href="https://www.notion.so/product/ai" target="_blank" class="card">
+                    <span class="icon">📝</span>
+                    <span class="name">Notion AI</span>
+                    <span class="desc">笔记软件集成的智能写作</span>
+                </a>
+                <a href="https://www.phind.com" target="_blank" class="card">
+                    <span class="icon">🕵️</span>
+                    <span class="name">Phind</span>
+                    <span class="desc">程序员专用的 AI 搜索引擎</span>
+                </a>
+                <a href="https://www.monica.im" target="_blank" class="card">
+                    <span class="icon">🦋</span>
+                    <span class="name">Monica</span>
+                    <span class="desc">全网通用的 AI 助手插件</span>
+                </a>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p>© 2026 AI HUB NAVIGATION | 聚合最前沿的智能工具</p>
+    </footer>
+
+    <script>
         function updateTime() {
             const now = new Date();
-            document.getElementById('time').textContent = now.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
-            document.getElementById('date').textContent = now.toLocaleDateString('zh-CN', { month: 'short', day: 'numeric', weekday: 'short' });
+            const timeStr = now.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            document.getElementById('time').textContent = timeStr;
         }
-        
-        // 初始化
-        Object.keys(sites).forEach(k => renderSites(k, sites[k]));
         updateTime();
         setInterval(updateTime, 1000);
-        
-        // 快捷键
-        document.addEventListener('keydown', e => {
-            if (e.key === '/' && document.activeElement.id !== 'q') {
-                e.preventDefault();
-                document.getElementById('q').focus();
-            }
-        });
     </script>
 </body>
 </html>
