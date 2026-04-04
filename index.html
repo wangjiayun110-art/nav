@@ -4,143 +4,269 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的导航 - 上网从这里开始</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             min-height: 100vh;
             color: #fff;
-            padding: 20px;
         }
-        .container { max-width: 1200px; margin: 0 auto; }
         
-        /* 搜索框 */
-        .search-box {
-            text-align: center;
-            margin: 60px 0 40px;
-        }
-        .search-box h1 {
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-        }
-        .search-form {
+        /* 顶部栏 */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(20px);
+            padding: 15px 30px;
             display: flex;
-            justify-content: center;
-            gap: 10px;
-            max-width: 600px;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .time-weather {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 0.95em;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        /* 主内容 */
+        .main {
+            padding: 100px 40px 40px;
+            max-width: 1400px;
             margin: 0 auto;
         }
-        .search-form input {
-            flex: 1;
-            padding: 15px 25px;
-            font-size: 1.1em;
-            border: none;
-            border-radius: 50px;
-            background: rgba(255,255,255,0.95);
-            color: #333;
-            outline: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        
+        /* 搜索框 */
+        .search-section {
+            text-align: center;
+            margin: 40px 0 60px;
         }
-        .search-form button {
-            padding: 15px 40px;
+        
+        .search-title {
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        
+        .search-box {
+            display: flex;
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            padding: 5px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 18px 30px;
+            font-size: 1.1em;
+            border: none;
+            background: transparent;
+            color: #fff;
+            outline: none;
+        }
+        
+        .search-box input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .search-box button {
+            padding: 18px 40px;
             font-size: 1.1em;
             border: none;
             border-radius: 50px;
-            background: #ff6b6b;
-            color: #fff;
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            color: #000;
             font-weight: bold;
             cursor: pointer;
-            transition: transform 0.3s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s;
         }
-        .search-form button:hover { transform: scale(1.05); }
+        
+        .search-box button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,217,255,0.4);
+        }
         
         .engines {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
         }
+        
         .engines span {
-            padding: 8px 20px;
-            background: rgba(255,255,255,0.2);
+            padding: 8px 18px;
+            background: rgba(255,255,255,0.1);
             border-radius: 20px;
             font-size: 0.9em;
             cursor: pointer;
             transition: all 0.3s;
-        }
-        .engines span:hover, .engines span.active {
-            background: rgba(255,255,255,0.4);
+            border: 1px solid transparent;
         }
         
-        /* 时间显示 */
-        .time {
-            text-align: center;
-            font-size: 1.2em;
-            margin-bottom: 40px;
-            opacity: 0.9;
+        .engines span:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .engines span.active {
+            background: rgba(0,217,255,0.3);
+            border-color: #00d9ff;
+        }
+        
+        /* 快捷操作 */
+        .quick-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .quick-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .quick-btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
         }
         
         /* 分类 */
         .section {
-            margin: 40px 0;
+            margin: 50px 0;
         }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
         .section-title {
             font-size: 1.3em;
-            margin-bottom: 20px;
-            padding-left: 15px;
-            border-left: 4px solid #ffd700;
+            color: #00d9ff;
         }
+        
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(0,217,255,0.5), transparent);
+        }
+        
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
             gap: 15px;
         }
+        
         .card {
-            background: rgba(255,255,255,0.15);
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 25px 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
             text-decoration: none;
             color: #fff;
             transition: all 0.3s;
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.05);
         }
+        
         .card:hover {
-            background: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(0,217,255,0.3);
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
+        
         .card .icon {
-            font-size: 2em;
-            margin-bottom: 10px;
-            display: block;
+            font-size: 2.2em;
+            margin-bottom: 12px;
         }
+        
         .card .name {
             font-size: 0.95em;
+            text-align: center;
         }
         
         /* 页脚 */
         .footer {
             text-align: center;
-            margin-top: 60px;
-            padding: 20px;
-            opacity: 0.7;
+            padding: 40px 20px;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9em;
         }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .header { padding: 10px 20px; }
+            .logo { font-size: 1.2em; }
+            .time-weather { display: none; }
+            .main { padding: 80px 20px 20px; }
+            .search-title { font-size: 1.5em; }
+            .search-box input { padding: 15px 20px; }
+            .search-box button { padding: 15px 25px; }
+            .grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
+            .card { padding: 20px 10px; }
+            .card .icon { font-size: 1.8em; }
+        }
+        
+        /* 动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section { animation: fadeIn 0.5s ease-out; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- 时间 -->
-        <div class="time" id="time"></div>
-        
-        <!-- 搜索 -->
-        <div class="search-box">
-            <h1>🔍 我的导航</h1>
-            <form class="search-form" onsubmit="return search()">
-                <input type="text" id="q" placeholder="搜索网页、视频、图片...">
+    <div class="header">
+        <div class="logo">🧭 我的导航</div>
+        <div class="time-weather">
+            <span id="time"></span>
+            <span id="date"></span>
+        </div>
+    </div>
+    
+    <div class="main">
+        <div class="search-section">
+            <h1 class="search-title">快速搜索，一键直达</h1>
+            <form class="search-box" onsubmit="return search()">
+                <input type="text" id="q" placeholder="搜索网页、视频、图片、新闻..." autofocus>
                 <button type="submit">搜索</button>
             </form>
             <div class="engines">
@@ -149,41 +275,68 @@
                 <span onclick="setEngine('bing')">Bing</span>
                 <span onclick="setEngine('zhihu')">知乎</span>
                 <span onclick="setEngine('bilibili')">B站</span>
+                <span onclick="setEngine('taobao')">淘宝</span>
+                <span onclick="setEngine('weibo')">微博</span>
             </div>
         </div>
         
-        <!-- 常用网站 -->
+        <div class="quick-actions">
+            <a href="https://mail.qq.com" target="_blank" class="quick-btn">📧 邮箱</a>
+            <a href="https://wx.qq.com" target="_blank" class="quick-btn">💬 微信</a>
+            <a href="https://github.com" target="_blank" class="quick-btn">💻 GitHub</a>
+            <a href="https://chat.openai.com" target="_blank" class="quick-btn">🤖 ChatGPT</a>
+        </div>
+        
         <div class="section">
-            <h2 class="section-title">⭐ 常用网站</h2>
+            <div class="section-header">
+                <span class="section-title">⭐ 常用网站</span>
+                <span class="section-line"></span>
+            </div>
             <div class="grid" id="common"></div>
         </div>
         
-        <!-- 视频 -->
         <div class="section">
-            <h2 class="section-title">🎬 视频娱乐</h2>
+            <div class="section-header">
+                <span class="section-title">🎬 视频娱乐</span>
+                <span class="section-line"></span>
+            </div>
             <div class="grid" id="video"></div>
         </div>
         
-        <!-- 社交 -->
         <div class="section">
-            <h2 class="section-title">💬 社交媒体</h2>
+            <div class="section-header">
+                <span class="section-title">📱 社交媒体</span>
+                <span class="section-line"></span>
+            </div>
             <div class="grid" id="social"></div>
         </div>
         
-        <!-- 工具 -->
         <div class="section">
-            <h2 class="section-title">🛠️ 常用工具</h2>
+            <div class="section-header">
+                <span class="section-title">🛠️ 常用工具</span>
+                <span class="section-line"></span>
+            </div>
             <div class="grid" id="tools"></div>
         </div>
         
-        <!-- AI -->
         <div class="section">
-            <h2 class="section-title">🤖 AI 助手</h2>
+            <div class="section-header">
+                <span class="section-title">🤖 AI 助手</span>
+                <span class="section-line"></span>
+            </div>
             <div class="grid" id="ai"></div>
         </div>
         
+        <div class="section">
+            <div class="section-header">
+                <span class="section-title">📰 新闻资讯</span>
+                <span class="section-line"></span>
+            </div>
+            <div class="grid" id="news"></div>
+        </div>
+        
         <div class="footer">
-            <p>📚 收藏本页，上网更方便</p>
+            <p>📚 收藏本页，上网更方便 | 按 Ctrl+D 收藏</p>
         </div>
     </div>
     
@@ -194,7 +347,9 @@
             google: 'https://www.google.com/search?q=',
             bing: 'https://www.bing.com/search?q=',
             zhihu: 'https://www.zhihu.com/search?q=',
-            bilibili: 'https://search.bilibili.com/all?keyword='
+            bilibili: 'https://search.bilibili.com/all?keyword=',
+            taobao: 'https://s.taobao.com/search?q=',
+            weibo: 'https://s.weibo.com/weibo/'
         };
         
         const sites = {
@@ -202,9 +357,11 @@
                 { name: '百度', icon: '🔍', url: 'https://www.baidu.com' },
                 { name: '淘宝', icon: '🛒', url: 'https://www.taobao.com' },
                 { name: '京东', icon: '📦', url: 'https://www.jd.com' },
+                { name: '拼多多', icon: '🔴', url: 'https://www.pinduoduo.com' },
                 { name: '微博', icon: '📱', url: 'https://weibo.com' },
                 { name: '知乎', icon: '💭', url: 'https://www.zhihu.com' },
                 { name: '豆瓣', icon: '📖', url: 'https://www.douban.com' },
+                { name: '美团', icon: '🍜', url: 'https://www.meituan.com' },
             ],
             video: [
                 { name: '哔哩哔哩', icon: '📺', url: 'https://www.bilibili.com' },
@@ -213,8 +370,10 @@
                 { name: '腾讯视频', icon: '📺', url: 'https://v.qq.com' },
                 { name: '芒果TV', icon: '🍎', url: 'https://www.mgtv.com' },
                 { name: '抖音', icon: '🎵', url: 'https://www.douyin.com' },
+                { name: '快手', icon: '⚡', url: 'https://www.kuaishou.com' },
                 { name: 'YouTube', icon: '▶️', url: 'https://www.youtube.com' },
                 { name: 'Netflix', icon: '🎬', url: 'https://www.netflix.com' },
+                { name: 'Twitch', icon: '🎮', url: 'https://www.twitch.tv' },
             ],
             social: [
                 { name: '微信', icon: '💬', url: 'https://wx.qq.com' },
@@ -222,6 +381,8 @@
                 { name: '小红书', icon: '📕', url: 'https://www.xiaohongshu.com' },
                 { name: 'Twitter', icon: '🐦', url: 'https://twitter.com' },
                 { name: 'Instagram', icon: '📷', url: 'https://www.instagram.com' },
+                { name: 'Discord', icon: '🎮', url: 'https://discord.com' },
+                { name: 'Telegram', icon: '✈️', url: 'https://telegram.org' },
                 { name: 'Facebook', icon: '👤', url: 'https://www.facebook.com' },
             ],
             tools: [
@@ -229,8 +390,10 @@
                 { name: '百度网盘', icon: '💾', url: 'https://pan.baidu.com' },
                 { name: '阿里云盘', icon: '☁️', url: 'https://www.aliyundrive.com' },
                 { name: '腾讯文档', icon: '📝', url: 'https://docs.qq.com' },
-                { name: '石墨文档', icon: '📄', url: 'https://shimo.im' },
+                { name: 'Notion', icon: '📓', url: 'https://www.notion.so' },
                 { name: 'ProcessOn', icon: '📊', url: 'https://www.processon.com' },
+                { name: '草料二维码', icon: '📱', url: 'https://cli.im' },
+                { name: 'TinyPNG', icon: '🖼️', url: 'https://tinypng.com' },
             ],
             ai: [
                 { name: 'ChatGPT', icon: '🤖', url: 'https://chat.openai.com' },
@@ -239,6 +402,18 @@
                 { name: '通义千问', icon: '💬', url: 'https://tongyi.aliyun.com' },
                 { name: '文心一言', icon: '🖋️', url: 'https://yiyan.baidu.com' },
                 { name: 'Kimi', icon: '🌙', url: 'https://kimi.moonshot.cn' },
+                { name: 'Gemini', icon: '✨', url: 'https://gemini.google.com' },
+                { name: 'Midjourney', icon: '🎨', url: 'https://www.midjourney.com' },
+            ],
+            news: [
+                { name: '今日头条', icon: '📰', url: 'https://www.toutiao.com' },
+                { name: '腾讯新闻', icon: '📱', url: 'https://news.qq.com' },
+                { name: '新浪新闻', icon: '📰', url: 'https://news.sina.com.cn' },
+                { name: '网易新闻', icon: '📰', url: 'https://news.163.com' },
+                { name: '36氪', icon: '🚀', url: 'https://36kr.com' },
+                { name: '虎嗅', icon: '🐯', url: 'https://www.huxiu.com' },
+                { name: 'V2EX', icon: '💬', url: 'https://www.v2ex.com' },
+                { name: '少数派', icon: '📱', url: 'https://sspai.com' },
             ]
         };
         
@@ -246,11 +421,12 @@
             engine = e;
             document.querySelectorAll('.engines span').forEach(s => s.classList.remove('active'));
             event.target.classList.add('active');
+            document.getElementById('q').focus();
         }
         
         function search() {
-            const q = document.getElementById('q').value;
-            if (q) window.open(engines[engine] + encodeURIComponent(q));
+            const q = document.getElementById('q').value.trim();
+            if (q) window.open(engines[engine] + encodeURIComponent(q), '_blank');
             return false;
         }
         
@@ -265,18 +441,22 @@
         
         function updateTime() {
             const now = new Date();
-            document.getElementById('time').innerHTML = 
-                now.toLocaleDateString('zh-CN', { weekday: 'long' }) + ' ' +
-                now.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('time').textContent = now.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('date').textContent = now.toLocaleDateString('zh-CN', { month: 'short', day: 'numeric', weekday: 'short' });
         }
         
-        renderSites('common', sites.common);
-        renderSites('video', sites.video);
-        renderSites('social', sites.social);
-        renderSites('tools', sites.tools);
-        renderSites('ai', sites.ai);
+        // 初始化
+        Object.keys(sites).forEach(k => renderSites(k, sites[k]));
         updateTime();
         setInterval(updateTime, 1000);
+        
+        // 快捷键
+        document.addEventListener('keydown', e => {
+            if (e.key === '/' && document.activeElement.id !== 'q') {
+                e.preventDefault();
+                document.getElementById('q').focus();
+            }
+        });
     </script>
 </body>
 </html>
