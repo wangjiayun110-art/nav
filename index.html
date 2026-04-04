@@ -3,458 +3,404 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>全能综合 HUB - 你的数字生活起点</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
+    <title>我的综合导航 - 极简 · 高效</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦁</text></svg>">
     <style>
         :root {
-            --primary: #00d9ff;
-            --secondary: #00ff88;
-            --accent: #ff00ff;
-            --bg: #0a0c10;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --text: #ffffff;
+            --sidebar-bg: #1a1a1a;
+            --main-bg: #f5f7f9;
+            --active-color: #f39c12;
+            --text-main: #333;
+            --text-desc: #999;
+            --card-bg: #ffffff;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
         body {
-            font-family: 'Segoe UI', 'PingFang SC', sans-serif;
-            background-color: var(--bg);
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(0, 217, 255, 0.1) 0px, transparent 40%),
-                radial-gradient(at 100% 100%, rgba(255, 0, 255, 0.1) 0px, transparent 40%);
-            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--main-bg);
+            color: var(--text-main);
+            display: flex;
+        }
+
+        /* 左侧边栏 */
+        aside {
+            width: 240px;
+            height: 100vh;
+            background-color: var(--sidebar-bg);
+            position: fixed;
+            left: 0;
+            top: 0;
+            overflow-y: auto;
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .logo-area {
+            padding: 0 25px 30px;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-list { list-style: none; }
+
+        .nav-item a {
+            display: flex;
+            align-items: center;
+            padding: 12px 25px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 0.95em;
+            gap: 12px;
+        }
+
+        .nav-item a:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+
+        .nav-item a.active {
+            color: var(--active-color);
+            background-color: rgba(243, 156, 18, 0.1);
+            border-right: 3px solid var(--active-color);
+        }
+
+        .nav-item i { font-style: normal; font-size: 1.2em; }
+
+        /* 右侧主内容 */
+        main {
+            flex: 1;
+            margin-left: 240px;
+            padding: 40px 60px;
             min-height: 100vh;
         }
 
-        /* 顶部导航 */
         header {
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(25px);
-            padding: 15px 40px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
         }
 
-        .logo {
-            font-size: 1.4em;
-            font-weight: 900;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-
-        .search-container {
+        .search-bar {
+            background: white;
+            border-radius: 8px;
+            padding: 10px 20px;
+            width: 400px;
             display: flex;
-            background: var(--card-bg);
-            border-radius: 30px;
-            padding: 5px 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            width: 500px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        .search-container input {
-            background: transparent;
+        .search-bar input {
             border: none;
-            color: white;
-            padding: 8px 15px;
-            width: 100%;
             outline: none;
-        }
-
-        .time-box {
-            font-family: 'Courier New', Courier, monospace;
-            color: var(--primary);
-        }
-
-        /* 布局 */
-        .wrapper {
-            max-width: 1600px;
-            margin: 30px auto;
-            padding: 0 20px;
-            display: flex;
-            gap: 40px;
-        }
-
-        /* 侧栏 */
-        .sidebar {
-            width: 200px;
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-        }
-
-        .sidebar a {
-            display: block;
-            color: rgba(255, 255, 255, 0.5);
-            text-decoration: none;
-            padding: 12px 15px;
-            border-radius: 10px;
-            margin-bottom: 5px;
-            transition: 0.3s;
+            width: 100%;
             font-size: 0.95em;
         }
 
-        .sidebar a:hover, .sidebar a.active {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--primary);
-            box-shadow: inset 3px 0 0 var(--primary);
-        }
-
-        /* 内容区 */
-        .content { flex: 1; }
-
-        section {
-            margin-bottom: 60px;
-            scroll-margin-top: 120px;
-        }
-
-        .section-header {
+        .github-link {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.9em;
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 5px;
+        }
+
+        /* 章节板块 */
+        section {
+            margin-bottom: 50px;
+            scroll-margin-top: 40px;
         }
 
         .section-title {
-            font-size: 1.4em;
-            font-weight: 700;
-            color: var(--primary);
-            white-space: nowrap;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .section-line {
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, rgba(0, 217, 255, 0.2), transparent);
-        }
-
-        /* 网格卡片 */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
         }
 
+        /* 卡片设计 */
         .card {
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 25px 15px;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            color: white;
-            text-align: center;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
+            color: var(--text-main);
+            transition: 0.3s;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+            border: 1px solid transparent;
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-color: var(--active-color);
         }
 
-        .card i {
-            font-size: 2.5em;
-            margin-bottom: 12px;
-            display: block;
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            margin-right: 15px;
+            flex-shrink: 0;
         }
 
-        .card .name {
-            font-size: 0.95em;
+        .card-info { overflow: hidden; }
+
+        .card-name {
             font-weight: 600;
+            font-size: 1em;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        .card .desc {
-            font-size: 0.75em;
-            color: rgba(255, 255, 255, 0.4);
-            margin-top: 8px;
-            line-height: 1.3;
+        .card-desc {
+            font-size: 0.85em;
+            color: var(--text-desc);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        /* 特殊卡片：下载 */
-        .tv-download {
-            background: linear-gradient(135deg, rgba(0, 217, 255, 0.15), rgba(0, 255, 136, 0.15));
-            border: 1px solid var(--primary);
-            position: relative;
+        /* 特殊：电视下载卡片 */
+        .card.tv-special {
+            background: linear-gradient(135deg, #fff 0%, #fff9f0 100%);
+            border: 1px solid #fee1b1;
         }
 
-        .badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: var(--accent);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.6em;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; }
-        }
-
-        /* 移动端 */
+        /* 移动端适配 */
         @media (max-width: 900px) {
-            .wrapper { flex-direction: column; }
-            .sidebar { display: none; }
-            .search-container { width: 100%; }
-            header { flex-direction: column; gap: 15px; text-align: center; }
+            aside { display: none; }
+            main { margin-left: 0; padding: 20px; }
+            .search-bar { width: 100%; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <a href="#" class="logo">ALL-IN-ONE ECO HUB</a>
-        <div class="search-container">
-            <input type="text" id="q" placeholder="输入关键词回车搜索 (百度)..." onkeydown="if(event.keyCode==13) window.open('https://www.baidu.com/s?wd='+encodeURIComponent(this.value))">
-        </div>
-        <div class="time-box" id="time">00:00:00</div>
-    </header>
+    <aside>
+        <div class="logo-area">🧭 科技导航</div>
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#tv" class="active"><i>📺</i> 电视直播源</a></li>
+            <li class="nav-item"><a href="#ai"><i>🤖</i> AI 工具</a></li>
+            <li class="nav-item"><a href="#vps-cn"><i>☁️</i> 云服务器-国内</a></li>
+            <li class="nav-item"><a href="#vps-os"><i>🌍</i> 云服务器-海外</a></li>
+            <li class="nav-item"><a href="#ops"><i>🛠️</i> 运维面板</a></li>
+            <li class="nav-item"><a href="#webmaster"><i>⚒️</i> 站长工具</a></li>
+            <li class="nav-item"><a href="#pay"><i>💳</i> 跨境支付</a></li>
+            <li class="nav-item"><a href="#cloud"><i>📁</i> 网盘云盘</a></li>
+            <li class="nav-item"><a href="#social"><i>📱</i> 社交娱乐</a></li>
+        </ul>
+    </aside>
 
-    <div class="wrapper">
-        <aside class="sidebar">
-            <a href="#tv" class="active">📺 电视直播源</a>
-            <a href="#vps">☁️ 云服务器</a>
-            <a href="#cloud">💾 云盘存储</a>
-            <a href="#community">🤝 交流社区</a>
-            <a href="#ai">🤖 AI 工具</a>
-            <a href="#social">🎵 社交娱乐</a>
-        </aside>
+    <main>
+        <header>
+            <div class="search-bar">
+                <input type="text" placeholder="输入搜索内容 (百度搜索)..." onkeydown="if(event.keyCode==13) window.open('https://www.baidu.com/s?wd='+encodeURIComponent(this.value))">
+            </div>
+            <a href="https://github.com/wangjiayun110-art/nav" target="_blank" class="github-link">
+                <img src="https://github.githubassets.com/favicons/favicon.svg" width="20"> GitHub
+            </a>
+        </header>
 
-        <main class="content">
-            <!-- 电视直播源 -->
-            <section id="tv">
-                <div class="section-header">
-                    <span class="section-title">电视直播资源 (每日自动维护)</span>
-                    <span class="section-line"></span>
-                </div>
-                <div class="grid">
-                    <a href="tv.m3u" download="live.m3u" class="card tv-download">
-                        <span class="badge">PRO</span>
-                        <i>📥</i>
-                        <span class="name">下载 M3U 列表</span>
-                        <span class="desc">PotPlayer / VLC 专用</span>
-                    </a>
-                    <a href="https://github.com/iptv-org/iptv" target="_blank" class="card">
-                        <i>📡</i>
-                        <span class="name">iptv-org</span>
-                        <span class="desc">全球最大直播源项目</span>
-                    </a>
-                    <a href="https://www.right.com.cn/forum/forum-48-1.html" target="_blank" class="card">
-                        <i>🛠️</i>
-                        <span class="name">恩山 IPTV 板块</span>
-                        <span class="desc">直播源抓取分享首选</span>
-                    </a>
-                    <a href="https://www.yangshipin.cn/" target="_blank" class="card">
-                        <i>🇨🇳</i>
-                        <span class="name">央视频</span>
-                        <span class="desc">官方高清直播入口</span>
-                    </a>
-                </div>
-            </section>
+        <!-- 电视直播 -->
+        <section id="tv">
+            <div class="section-title">📺 电视直播源 (置顶推荐)</div>
+            <div class="grid">
+                <a href="tv.m3u" download class="card tv-special">
+                    <div class="card-icon">📥</div>
+                    <div class="card-info">
+                        <div class="card-name">下载 M3U 列表</div>
+                        <div class="card-desc">自动抓取最新有效源</div>
+                    </div>
+                </a>
+                <a href="https://www.yangshipin.cn/" target="_blank" class="card">
+                    <div class="card-icon">🇨🇳</div>
+                    <div class="card-info">
+                        <div class="card-name">央视频</div>
+                        <div class="card-desc">官方 4K/高清直播</div>
+                    </div>
+                </a>
+                <a href="https://v.qq.com/live/" target="_blank" class="card">
+                    <div class="card-icon">🎥</div>
+                    <div class="card-info">
+                        <div class="card-name">腾讯卫视</div>
+                        <div class="card-desc">全国卫视聚合直播</div>
+                    </div>
+                </a>
+            </div>
+        </section>
 
-            <!-- 云服务器连接 -->
-            <section id="vps">
-                <div class="section-header">
-                    <span class="section-title">云服务器管理 (Console)</span>
-                    <span class="section-line"></span>
-                </div>
-                <div class="grid">
-                    <a href="https://console.cloud.google.com/" target="_blank" class="card">
-                        <i>☁️</i>
-                        <span class="name">GCP 控制台</span>
-                        <span class="desc">Google Cloud</span>
-                    </a>
-                    <a href="https://console.aws.amazon.com/" target="_blank" class="card">
-                        <i>🟠</i>
-                        <span class="name">AWS 控制台</span>
-                        <span class="desc">Amazon Services</span>
-                    </a>
-                    <a href="https://console.aliyun.com/" target="_blank" class="card">
-                        <i>⚪</i>
-                        <span class="name">阿里云</span>
-                        <span class="desc">ECS/轻量管理</span>
-                    </a>
-                    <a href="https://console.cloud.tencent.com/" target="_blank" class="card">
-                        <i>🔵</i>
-                        <span class="name">腾讯云</span>
-                        <span class="desc">CVM/Lighthouse</span>
-                    </a>
-                    <a href="https://www.oracle.com/cloud/sign-in.html" target="_blank" class="card">
-                        <i>🔴</i>
-                        <span class="name">Oracle Cloud</span>
-                        <span class="desc">甲骨文永久免费云</span>
-                    </a>
-                    <a href="https://www.cloudflare.com/" target="_blank" class="card">
-                        <i>🛡️</i>
-                        <span class="name">Cloudflare</span>
-                        <span class="desc">域名/CDN/防护</span>
-                    </a>
-                </div>
-            </section>
+        <!-- AI工具 -->
+        <section id="ai">
+            <div class="section-title">🤖 AI 工具</div>
+            <div class="grid">
+                <a href="https://chat.openai.com" target="_blank" class="card">
+                    <div class="card-icon">🤖</div>
+                    <div class="card-info">
+                        <div class="card-name">ChatGPT</div>
+                        <div class="card-desc">OpenAI 全能 AI 助手</div>
+                    </div>
+                </a>
+                <a href="https://claude.ai" target="_blank" class="card">
+                    <div class="card-icon">🧠</div>
+                    <div class="card-info">
+                        <div class="card-name">Claude</div>
+                        <div class="card-desc">Anthropic 高智能助手</div>
+                    </div>
+                </a>
+                <a href="https://chat.deepseek.com" target="_blank" class="card">
+                    <div class="card-icon">🔮</div>
+                    <div class="card-info">
+                        <div class="card-name">DeepSeek</div>
+                        <div class="card-desc">国产最强编程/推理</div>
+                    </div>
+                </a>
+                <a href="https://perplexity.ai" target="_blank" class="card">
+                    <div class="card-icon">🔍</div>
+                    <div class="card-info">
+                        <div class="card-name">Perplexity</div>
+                        <div class="card-desc">AI 搜索神器</div>
+                    </div>
+                </a>
+            </div>
+        </section>
 
-            <!-- 云盘链接 -->
-            <section id="cloud">
-                <div class="section-header">
-                    <span class="section-title">云盘与存储 (Drive)</span>
-                    <span class="section-line"></span>
-                </div>
-                <div class="grid">
-                    <a href="https://pan.baidu.com/" target="_blank" class="card">
-                        <i>💿</i>
-                        <span class="name">百度网盘</span>
-                        <span class="desc">主流资源分享平台</span>
-                    </a>
-                    <a href="https://www.aliyundrive.com/" target="_blank" class="card">
-                        <i>☁️</i>
-                        <span class="name">阿里云盘</span>
-                        <span class="desc">极速上传下载</span>
-                    </a>
-                    <a href="https://pan.quark.cn/" target="_blank" class="card">
-                        <i>🧬</i>
-                        <span class="name">夸克网盘</span>
-                        <span class="desc">大空间资源集散地</span>
-                    </a>
-                    <a href="https://drive.google.com/" target="_blank" class="card">
-                        <i>📂</i>
-                        <span class="name">Google Drive</span>
-                        <span class="desc">全球通用协作盘</span>
-                    </a>
-                    <a href="https://www.terabox.com/" target="_blank" class="card">
-                        <i>📦</i>
-                        <span class="name">TeraBox</span>
-                        <span class="desc">超大容量海外盘</span>
-                    </a>
-                </div>
-            </section>
+        <!-- 站长工具 -->
+        <section id="webmaster">
+            <div class="section-title">⚒️ 站长工具</div>
+            <div class="grid">
+                <a href="https://www.itdog.cn/" target="_blank" class="card">
+                    <div class="card-icon">🐶</div>
+                    <div class="card-info">
+                        <div class="card-name">ITDOG</div>
+                        <div class="card-desc">在线网络连通性测试</div>
+                    </div>
+                </a>
+                <a href="https://ipinfo.io/" target="_blank" class="card">
+                    <div class="card-icon">🌐</div>
+                    <div class="card-info">
+                        <div class="card-name">IPinfo</div>
+                        <div class="card-desc">精准 IP 信息查询</div>
+                    </div>
+                </a>
+                <a href="https://fofa.info/" target="_blank" class="card">
+                    <div class="card-icon">🔍</div>
+                    <div class="card-info">
+                        <div class="card-name">FOFA</div>
+                        <div class="card-desc">网络空间搜索引擎</div>
+                    </div>
+                </a>
+                <a href="https://gtmetrix.com/" target="_blank" class="card">
+                    <div class="card-icon">⏱️</div>
+                    <div class="card-info">
+                        <div class="card-name">GTmetrix</div>
+                        <div class="card-desc">网站性能测速分析</div>
+                    </div>
+                </a>
+            </div>
+        </section>
 
-            <!-- 交流社区 -->
-            <section id="community">
-                <div class="section-header">
-                    <span class="section-title">技术与资源社区 (Forum)</span>
-                    <span class="section-line"></span>
-                </div>
-                <div class="grid">
-                    <a href="https://www.nodeseek.com/" target="_blank" class="card">
-                        <i>💬</i>
-                        <span class="name">NodeSeek</span>
-                        <span class="desc">高端服务器玩家社区</span>
-                    </a>
-                    <a href="https://hostloc.com/" target="_blank" class="card">
-                        <i>🔥</i>
-                        <span class="name">HostLoc</span>
-                        <span class="desc">全球主机交流论坛</span>
-                    </a>
-                    <a href="https://www.v2ex.com/" target="_blank" class="card">
-                        <i>🧠</i>
-                        <span class="name">V2EX</span>
-                        <span class="desc">创意工作者与极客</span>
-                    </a>
-                    <a href="https://www.52pojie.cn/" target="_blank" class="card">
-                        <i>🔓</i>
-                        <span class="name">吾爱破解</span>
-                        <span class="desc">软件与安全技术论坛</span>
-                    </a>
-                    <a href="https://www.reddit.com/r/IPTV/" target="_blank" class="card">
-                        <i>👽</i>
-                        <span class="name">Reddit IPTV</span>
-                        <span class="desc">全球 IPTV 交流区</span>
-                    </a>
-                </div>
-            </section>
+        <!-- 运维面板 -->
+        <section id="ops">
+            <div class="section-title">🛠️ 运维面板</div>
+            <div class="grid">
+                <a href="https://www.bt.cn/" target="_blank" class="card">
+                    <div class="card-icon">🧱</div>
+                    <div class="card-info">
+                        <div class="card-name">宝塔面板</div>
+                        <div class="card-desc">中文 Linux 运维专家</div>
+                    </div>
+                </a>
+                <a href="https://1panel.cn/" target="_blank" class="card">
+                    <div class="card-icon">🏢</div>
+                    <div class="card-info">
+                        <div class="card-name">1Panel</div>
+                        <div class="card-desc">新一代开源运维面板</div>
+                    </div>
+                </a>
+                <a href="https://www.aapanel.com/" target="_blank" class="card">
+                    <div class="card-icon">🔘</div>
+                    <div class="card-info">
+                        <div class="card-name">aaPanel</div>
+                        <div class="card-desc">宝塔国际版面板</div>
+                    </div>
+                </a>
+            </div>
+        </section>
 
-            <!-- AI 工具 -->
-            <section id="ai">
-                <div class="section-header">
-                    <span class="section-title">人工智能工具 (AI Models)</span>
-                    <span class="section-line"></span>
-                </div>
-                <div class="grid">
-                    <a href="https://chat.openai.com" target="_blank" class="card">
-                        <i>🤖</i>
-                        <span class="name">ChatGPT</span>
-                    </a>
-                    <a href="https://claude.ai" target="_blank" class="card">
-                        <i>🧠</i>
-                        <span class="name">Claude</span>
-                    </a>
-                    <a href="https://chat.deepseek.com" target="_blank" class="card">
-                        <i>🔮</i>
-                        <span class="name">DeepSeek</span>
-                    </a>
-                    <a href="https://perplexity.ai" target="_blank" class="card">
-                        <i>🔍</i>
-                        <span class="name">Perplexity</span>
-                    </a>
-                </div>
-            </section>
+        <!-- 跨境支付 -->
+        <section id="pay">
+            <div class="section-title">💳 跨境支付</div>
+            <div class="grid">
+                <a href="https://www.paypal.com/" target="_blank" class="card">
+                    <div class="card-icon">🅿️</div>
+                    <div class="card-info">
+                        <div class="card-name">PayPal</div>
+                        <div class="card-desc">全球主流支付网关</div>
+                    </div>
+                </a>
+                <a href="https://wise.com/" target="_blank" class="card">
+                    <div class="card-icon">💹</div>
+                    <div class="card-info">
+                        <div class="card-name">Wise</div>
+                        <div class="card-desc">跨境汇款与多币种卡</div>
+                    </div>
+                </a>
+                <a href="https://www.payoneer.com/" target="_blank" class="card">
+                    <div class="card-icon">⭕</div>
+                    <div class="card-info">
+                        <div class="card-name">Payoneer</div>
+                        <div class="card-desc">派安盈跨境收款</div>
+                    </div>
+                </a>
+            </div>
+        </section>
 
-            <!-- 社交娱乐 -->
-            <section id="social">
-                <div class="section-header">
-                    <span class="section-title">社交与娱乐 (Social & Ent)</span>
-                    <span class="section-line"></span>
-                </div>
-                <div class="grid">
-                    <a href="https://www.douyin.com/" target="_blank" class="card">
-                        <i>🎵</i>
-                        <span class="name">抖音</span>
-                        <span class="desc">国内短视频之王</span>
-                    </a>
-                    <a href="https://www.tiktok.com/" target="_blank" class="card">
-                        <i>🌐</i>
-                        <span class="name">TikTok</span>
-                        <span class="desc">全球短视频热潮</span>
-                    </a>
-                    <a href="https://web.telegram.org/" target="_blank" class="card">
-                        <i>✈️</i>
-                        <span class="name">Telegram Web</span>
-                        <span class="desc">端到端加密通讯</span>
-                    </a>
-                    <a href="https://discord.com/" target="_blank" class="card">
-                        <i>🎮</i>
-                        <span class="name">Discord</span>
-                        <span class="desc">多功能社区协作</span>
-                    </a>
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <footer style="text-align: center; padding: 60px; color: rgba(255,255,255,0.2); font-size: 0.85em; border-top: 1px solid rgba(255,255,255,0.05);">
-        © 2026 全能综合 HUB | 极致纯净 · 极速体验
-    </footer>
+    </main>
 
     <script>
-        function updateTime() {
-            const now = new Date();
-            document.getElementById('time').textContent = now.toLocaleTimeString('zh-CN', { hour12: false });
-        }
-        setInterval(updateTime, 1000);
-        updateTime();
+        // 侧边栏跟随滚动高亮
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-item a');
 
-        // 侧边栏高亮联动
         window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.sidebar a');
             let current = "";
             sections.forEach(section => {
-                if (pageYOffset >= section.offsetTop - 150) {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
                     current = section.getAttribute('id');
                 }
             });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) link.classList.add('active');
+
+            navItems.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href').substring(1) === current) {
+                    a.classList.add('active');
+                }
             });
         });
     </script>
