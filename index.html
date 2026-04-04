@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的综合导航 - 极简 · 高效</title>
+    <title>我的综合导航 - 科技 · 生活 · 效率</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦁</text></svg>">
     <style>
         :root {
@@ -92,7 +92,7 @@
             background: white;
             border-radius: 8px;
             padding: 10px 20px;
-            width: 400px;
+            width: 500px;
             display: flex;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
@@ -102,15 +102,6 @@
             outline: none;
             width: 100%;
             font-size: 0.95em;
-        }
-
-        .github-link {
-            text-decoration: none;
-            color: #333;
-            font-size: 0.9em;
-            display: flex;
-            align-items: center;
-            gap: 5px;
         }
 
         /* 章节板块 */
@@ -126,11 +117,12 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            color: #555;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 20px;
         }
 
@@ -138,13 +130,13 @@
         .card {
             background: var(--card-bg);
             border-radius: 12px;
-            padding: 20px;
+            padding: 15px;
             display: flex;
             align-items: center;
             text-decoration: none;
             color: var(--text-main);
             transition: 0.3s;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
             border: 1px solid transparent;
         }
 
@@ -155,14 +147,14 @@
         }
 
         .card-icon {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             border-radius: 10px;
             background: #f9f9f9;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5em;
+            font-size: 1.4em;
             margin-right: 15px;
             flex-shrink: 0;
         }
@@ -171,7 +163,7 @@
 
         .card-name {
             font-weight: 600;
-            font-size: 1em;
+            font-size: 0.95em;
             margin-bottom: 4px;
             white-space: nowrap;
             overflow: hidden;
@@ -179,56 +171,53 @@
         }
 
         .card-desc {
-            font-size: 0.85em;
+            font-size: 0.8em;
             color: var(--text-desc);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
-        /* 特殊：电视下载卡片 */
+        /* 特殊卡片样式 */
         .card.tv-special {
             background: linear-gradient(135deg, #fff 0%, #fff9f0 100%);
             border: 1px solid #fee1b1;
         }
 
-        /* 移动端适配 */
+        /* 响应式 */
         @media (max-width: 900px) {
             aside { display: none; }
             main { margin-left: 0; padding: 20px; }
             .search-bar { width: 100%; }
+            .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
         }
     </style>
 </head>
 <body>
     <aside>
-        <div class="logo-area">🧭 科技导航</div>
+        <div class="logo-area">🧭 综合导航</div>
         <ul class="nav-list">
             <li class="nav-item"><a href="#tv" class="active"><i>📺</i> 电视直播源</a></li>
             <li class="nav-item"><a href="#ai"><i>🤖</i> AI 工具</a></li>
-            <li class="nav-item"><a href="#vps-cn"><i>☁️</i> 云服务器-国内</a></li>
-            <li class="nav-item"><a href="#vps-os"><i>🌍</i> 云服务器-海外</a></li>
-            <li class="nav-item"><a href="#ops"><i>🛠️</i> 运维面板</a></li>
-            <li class="nav-item"><a href="#webmaster"><i>⚒️</i> 站长工具</a></li>
-            <li class="nav-item"><a href="#pay"><i>💳</i> 跨境支付</a></li>
-            <li class="nav-item"><a href="#cloud"><i>📁</i> 网盘云盘</a></li>
-            <li class="nav-item"><a href="#social"><i>📱</i> 社交娱乐</a></li>
+            <li class="nav-item"><a href="#video"><i>🎬</i> 影视视频</a></li>
+            <li class="nav-item"><a href="#social"><i>📱</i> 社交媒体</a></li>
+            <li class="nav-item"><a href="#shopping"><i>🛒</i> 购物生活</a></li>
+            <li class="nav-item"><a href="#tools"><i>🛠️</i> 实用工具</a></li>
+            <li class="nav-item"><a href="#news"><i>📰</i> 新闻资讯</a></li>
         </ul>
     </aside>
 
     <main>
         <header>
             <div class="search-bar">
-                <input type="text" placeholder="输入搜索内容 (百度搜索)..." onkeydown="if(event.keyCode==13) window.open('https://www.baidu.com/s?wd='+encodeURIComponent(this.value))">
+                <input type="text" placeholder="输入搜索内容，回车直达百度..." onkeydown="if(event.keyCode==13) window.open('https://www.baidu.com/s?wd='+encodeURIComponent(this.value))">
             </div>
-            <a href="https://github.com/wangjiayun110-art/nav" target="_blank" class="github-link">
-                <img src="https://github.githubassets.com/favicons/favicon.svg" width="20"> GitHub
-            </a>
+            <div id="time" style="color: #666; font-size: 0.9em; font-family: monospace;">00:00:00</div>
         </header>
 
         <!-- 电视直播 -->
         <section id="tv">
-            <div class="section-title">📺 电视直播源 (置顶推荐)</div>
+            <div class="section-title">📺 电视直播源</div>
             <div class="grid">
                 <a href="tv.m3u" download class="card tv-special">
                     <div class="card-icon">📥</div>
@@ -251,13 +240,27 @@
                         <div class="card-desc">全国卫视聚合直播</div>
                     </div>
                 </a>
+                <a href="https://www.mgtv.com/live/" target="_blank" class="card">
+                    <div class="card-icon">🍊</div>
+                    <div class="card-info">
+                        <div class="card-name">芒果 TV</div>
+                        <div class="card-desc">湖南卫视在线播放</div>
+                    </div>
+                </a>
             </div>
         </section>
 
         <!-- AI工具 -->
         <section id="ai">
-            <div class="section-title">🤖 AI 工具</div>
+            <div class="section-title">🤖 人工智能</div>
             <div class="grid">
+                <a href="https://chat.deepseek.com" target="_blank" class="card">
+                    <div class="card-icon">🔮</div>
+                    <div class="card-info">
+                        <div class="card-name">DeepSeek</div>
+                        <div class="card-desc">国产最强编程与推理</div>
+                    </div>
+                </a>
                 <a href="https://chat.openai.com" target="_blank" class="card">
                     <div class="card-icon">🤖</div>
                     <div class="card-info">
@@ -272,135 +275,221 @@
                         <div class="card-desc">Anthropic 高智能助手</div>
                     </div>
                 </a>
-                <a href="https://chat.deepseek.com" target="_blank" class="card">
-                    <div class="card-icon">🔮</div>
+                <a href="https://kimi.moonshot.cn" target="_blank" class="card">
+                    <div class="card-icon">🌙</div>
                     <div class="card-info">
-                        <div class="card-name">DeepSeek</div>
-                        <div class="card-desc">国产最强编程/推理</div>
+                        <div class="card-name">Kimi</div>
+                        <div class="card-desc">超长上下文阅读专家</div>
                     </div>
                 </a>
-                <a href="https://perplexity.ai" target="_blank" class="card">
-                    <div class="card-icon">🔍</div>
+                <a href="https://www.midjourney.com" target="_blank" class="card">
+                    <div class="card-icon">🎨</div>
                     <div class="card-info">
-                        <div class="card-name">Perplexity</div>
-                        <div class="card-desc">AI 搜索神器</div>
+                        <div class="card-name">Midjourney</div>
+                        <div class="card-desc">顶尖 AI 绘画创作</div>
                     </div>
                 </a>
             </div>
         </section>
 
-        <!-- 站长工具 -->
-        <section id="webmaster">
-            <div class="section-title">⚒️ 站长工具</div>
+        <!-- 影视视频 -->
+        <section id="video">
+            <div class="section-title">🎬 影视视频</div>
             <div class="grid">
-                <a href="https://www.itdog.cn/" target="_blank" class="card">
-                    <div class="card-icon">🐶</div>
+                <a href="https://www.bilibili.com" target="_blank" class="card">
+                    <div class="card-icon">📺</div>
                     <div class="card-info">
-                        <div class="card-name">ITDOG</div>
-                        <div class="card-desc">在线网络连通性测试</div>
+                        <div class="card-name">哔哩哔哩</div>
+                        <div class="card-desc">国内最火年轻人社区</div>
                     </div>
                 </a>
-                <a href="https://ipinfo.io/" target="_blank" class="card">
-                    <div class="card-icon">🌐</div>
+                <a href="https://www.youtube.com" target="_blank" class="card">
+                    <div class="card-icon">▶️</div>
                     <div class="card-info">
-                        <div class="card-name">IPinfo</div>
-                        <div class="card-desc">精准 IP 信息查询</div>
+                        <div class="card-name">YouTube</div>
+                        <div class="card-desc">全球最大视频分享平台</div>
                     </div>
                 </a>
-                <a href="https://fofa.info/" target="_blank" class="card">
-                    <div class="card-icon">🔍</div>
+                <a href="https://www.netflix.com" target="_blank" class="card">
+                    <div class="card-icon">🎥</div>
                     <div class="card-info">
-                        <div class="card-name">FOFA</div>
-                        <div class="card-desc">网络空间搜索引擎</div>
+                        <div class="card-name">Netflix</div>
+                        <div class="card-desc">奈飞精品影视在线看</div>
                     </div>
                 </a>
-                <a href="https://gtmetrix.com/" target="_blank" class="card">
-                    <div class="card-icon">⏱️</div>
+                <a href="https://www.dytt8.net/" target="_blank" class="card">
+                    <div class="card-icon">🍿</div>
                     <div class="card-info">
-                        <div class="card-name">GTmetrix</div>
-                        <div class="card-desc">网站性能测速分析</div>
+                        <div class="card-name">电影天堂</div>
+                        <div class="card-desc">经典影视资源下载</div>
                     </div>
                 </a>
             </div>
         </section>
 
-        <!-- 运维面板 -->
-        <section id="ops">
-            <div class="section-title">🛠️ 运维面板</div>
+        <!-- 社交媒体 -->
+        <section id="social">
+            <div class="section-title">📱 社交媒体</div>
             <div class="grid">
-                <a href="https://www.bt.cn/" target="_blank" class="card">
-                    <div class="card-icon">🧱</div>
+                <a href="https://weibo.com" target="_blank" class="card">
+                    <div class="card-icon">📱</div>
                     <div class="card-info">
-                        <div class="card-name">宝塔面板</div>
-                        <div class="card-desc">中文 Linux 运维专家</div>
+                        <div class="card-name">新浪微博</div>
+                        <div class="card-desc">实时热点发现平台</div>
                     </div>
                 </a>
-                <a href="https://1panel.cn/" target="_blank" class="card">
-                    <div class="card-icon">🏢</div>
+                <a href="https://www.xiaohongshu.com" target="_blank" class="card">
+                    <div class="card-icon">📕</div>
                     <div class="card-info">
-                        <div class="card-name">1Panel</div>
-                        <div class="card-desc">新一代开源运维面板</div>
+                        <div class="card-name">小红书</div>
+                        <div class="card-desc">年轻人的生活方式平台</div>
                     </div>
                 </a>
-                <a href="https://www.aapanel.com/" target="_blank" class="card">
-                    <div class="card-icon">🔘</div>
+                <a href="https://www.zhihu.com" target="_blank" class="card">
+                    <div class="card-icon">💭</div>
                     <div class="card-info">
-                        <div class="card-name">aaPanel</div>
-                        <div class="card-desc">宝塔国际版面板</div>
+                        <div class="card-name">知乎</div>
+                        <div class="card-desc">中文高质量问答社区</div>
+                    </div>
+                </a>
+                <a href="https://web.telegram.org/" target="_blank" class="card">
+                    <div class="card-icon">✈️</div>
+                    <div class="card-info">
+                        <div class="card-name">Telegram</div>
+                        <div class="card-desc">端到端加密通讯工具</div>
                     </div>
                 </a>
             </div>
         </section>
 
-        <!-- 跨境支付 -->
-        <section id="pay">
-            <div class="section-title">💳 跨境支付</div>
+        <!-- 购物生活 -->
+        <section id="shopping">
+            <div class="section-title">🛒 购物生活</div>
             <div class="grid">
-                <a href="https://www.paypal.com/" target="_blank" class="card">
-                    <div class="card-icon">🅿️</div>
+                <a href="https://www.taobao.com" target="_blank" class="card">
+                    <div class="card-icon">🛒</div>
                     <div class="card-info">
-                        <div class="card-name">PayPal</div>
-                        <div class="card-desc">全球主流支付网关</div>
+                        <div class="card-name">淘宝网</div>
+                        <div class="card-desc">淘你喜欢，应有尽有</div>
                     </div>
                 </a>
-                <a href="https://wise.com/" target="_blank" class="card">
-                    <div class="card-icon">💹</div>
+                <a href="https://www.jd.com" target="_blank" class="card">
+                    <div class="card-icon">📦</div>
                     <div class="card-info">
-                        <div class="card-name">Wise</div>
-                        <div class="card-desc">跨境汇款与多币种卡</div>
+                        <div class="card-name">京东商城</div>
+                        <div class="card-desc">正品保障，极速送达</div>
                     </div>
                 </a>
-                <a href="https://www.payoneer.com/" target="_blank" class="card">
-                    <div class="card-icon">⭕</div>
+                <a href="https://www.pinduoduo.com" target="_blank" class="card">
+                    <div class="card-icon">🔴</div>
                     <div class="card-info">
-                        <div class="card-name">Payoneer</div>
-                        <div class="card-desc">派安盈跨境收款</div>
+                        <div class="card-name">拼多多</div>
+                        <div class="card-desc">新电商开创者</div>
+                    </div>
+                </a>
+                <a href="https://www.alipay.com" target="_blank" class="card">
+                    <div class="card-icon">💳</div>
+                    <div class="card-info">
+                        <div class="card-name">支付宝</div>
+                        <div class="card-desc">数字生活开放平台</div>
                     </div>
                 </a>
             </div>
         </section>
 
+        <!-- 实用工具 -->
+        <section id="tools">
+            <div class="section-title">🛠️ 实用工具</div>
+            <div class="grid">
+                <a href="https://github.com" target="_blank" class="card">
+                    <div class="card-icon">💻</div>
+                    <div class="card-info">
+                        <div class="card-name">GitHub</div>
+                        <div class="card-desc">全球最大代码托管平台</div>
+                    </div>
+                </a>
+                <a href="https://pan.baidu.com" target="_blank" class="card">
+                    <div class="card-icon">💾</div>
+                    <div class="card-info">
+                        <div class="card-name">百度网盘</div>
+                        <div class="card-desc">大容量云存储服务</div>
+                    </div>
+                </a>
+                <a href="https://docs.qq.com" target="_blank" class="card">
+                    <div class="card-icon">📄</div>
+                    <div class="card-info">
+                        <div class="card-name">腾讯文档</div>
+                        <div class="card-desc">在线办公协作平台</div>
+                    </div>
+                </a>
+                <a href="https://www.kuaidi100.com/" target="_blank" class="card">
+                    <div class="card-icon">🚚</div>
+                    <div class="card-info">
+                        <div class="card-name">快递100</div>
+                        <div class="card-desc">全球快递一键查询</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 新闻资讯 -->
+        <section id="news">
+            <div class="section-title">📰 新闻资讯</div>
+            <div class="grid">
+                <a href="https://www.toutiao.com" target="_blank" class="card">
+                    <div class="card-icon">📰</div>
+                    <div class="card-info">
+                        <div class="card-name">今日头条</div>
+                        <div class="card-desc">智能新闻推荐引擎</div>
+                    </div>
+                </a>
+                <a href="https://36kr.com" target="_blank" class="card">
+                    <div class="card-icon">🚀</div>
+                    <div class="card-info">
+                        <div class="card-name">36氪</div>
+                        <div class="card-desc">新经济商业资讯</div>
+                    </div>
+                </a>
+                <a href="https://www.huxiu.com" target="_blank" class="card">
+                    <div class="card-icon">🐯</div>
+                    <div class="card-info">
+                        <div class="card-name">虎嗅网</div>
+                        <div class="card-desc">深度科技商业解析</div>
+                    </div>
+                </a>
+                <a href="https://news.ifeng.com/" target="_blank" class="card">
+                    <div class="card-icon">🌏</div>
+                    <div class="card-info">
+                        <div class="card-name">凤凰新闻</div>
+                        <div class="card-desc">客观中立的国际视野</div>
+                    </div>
+                </a>
+            </div>
+        </section>
     </main>
 
     <script>
-        // 侧边栏跟随滚动高亮
+        // 时间更新
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('time').textContent = now.toLocaleTimeString('zh-CN', { hour12: false });
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // 侧边栏联动
         const sections = document.querySelectorAll('section');
         const navItems = document.querySelectorAll('.nav-item a');
-
         window.addEventListener('scroll', () => {
             let current = "";
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 100) {
+                if (pageYOffset >= section.offsetTop - 100) {
                     current = section.getAttribute('id');
                 }
             });
-
             navItems.forEach(a => {
                 a.classList.remove('active');
-                if (a.getAttribute('href').substring(1) === current) {
-                    a.classList.add('active');
-                }
+                if (a.getAttribute('href').substring(1) === current) a.classList.add('active');
             });
         });
     </script>
