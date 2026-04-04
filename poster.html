@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>dh.790221.xyz 宣传海报</title>
+    <style>
+        body { margin: 0; padding: 0; background: #000; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: sans-serif; }
+        .poster {
+            width: 800px;
+            height: 1000px;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 80px 40px;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+        }
+        .glow {
+            position: absolute; width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(0,217,255,0.15) 0%, transparent 70%);
+            top: -100px; left: -100px;
+        }
+        .logo { font-size: 80px; margin-bottom: 20px; }
+        .title {
+            font-size: 56px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .subtitle { font-size: 28px; color: #94a3b8; margin-bottom: 60px; letter-spacing: 2px; }
+        .feature-list { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 80px; }
+        .feature-item {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: left;
+        }
+        .feature-icon { font-size: 32px; margin-bottom: 10px; }
+        .feature-name { font-size: 24px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+        .feature-desc { font-size: 16px; color: #94a3b8; line-height: 1.4; }
+        .qr-area {
+            margin-top: auto;
+            text-align: center;
+            padding: 40px;
+            background: rgba(0,217,255,0.1);
+            border-radius: 30px;
+            border: 2px solid #00d9ff;
+        }
+        .url { font-size: 42px; font-weight: 800; color: #fff; font-family: monospace; letter-spacing: -1px; }
+        .footer-note { margin-top: 15px; color: #00d9ff; font-size: 18px; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="glow"></div>
+        <div class="logo">🚀</div>
+        <div class="title">全能导航 HUB</div>
+        <div class="subtitle">让数字生活更简单 · 更智能</div>
+        
+        <div class="feature-list">
+            <div class="feature-item">
+                <div class="feature-icon">📺</div>
+                <div class="feature-name">电视直播</div>
+                <div class="feature-desc">每日自动更新 CCTV/港台高清源，点开即播。</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🤖</div>
+                <div class="feature-name">AI 工具箱</div>
+                <div class="feature-desc">深度集成 ChatGPT, DeepSeek 等最强 AI。</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">☁️</div>
+                <div class="feature-name">云端运维</div>
+                <div class="feature-desc">GCP/AWS/搬瓦工管理入口，极客办公必备。</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔍</div>
+                <div class="feature-name">资源搜索</div>
+                <div class="feature-desc">找书、找图、找视频，一个网页全搞定。</div>
+            </div>
+        </div>
+
+        <div class="qr-area">
+            <div class="url">dh.790221.xyz</div>
+            <div class="footer-note">建议设为浏览器首页 · 永久免费</div>
+        </div>
+    </div>
+</body>
+</html>
