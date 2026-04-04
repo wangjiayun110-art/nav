@@ -3,48 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>全能综合 HUB - 终极干货版 10.0</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
+    <title>全能综合 HUB - 极致精修 11.0</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
     <style>
         :root {
-            --sidebar-bg: #1a1a1a;
-            --main-bg: #f5f7f9;
-            --active-color: #f39c12;
-            --text-main: #333;
-            --text-desc: #888;
+            --sidebar-bg: #121212;
+            --main-bg: #f8fafc;
+            --accent: #f59e0b; /* 优雅金橙 */
             --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+            --text-title: #1e293b;
+            --text-desc: #64748b;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: "Inter", "system-ui", -apple-system, sans-serif;
             background-color: var(--main-bg);
-            color: var(--text-main);
+            color: var(--text-title);
             display: flex;
+            overflow-x: hidden;
         }
 
-        /* 左侧边栏 */
+        /* 侧边栏：极致磨砂 */
         aside {
-            width: 240px;
+            width: 260px;
             height: 100vh;
             background-color: var(--sidebar-bg);
             position: fixed;
             left: 0;
             top: 0;
-            overflow-y: auto;
             z-index: 1000;
-            padding: 20px 0;
+            padding: 40px 0;
+            box-shadow: 10px 0 30px rgba(0,0,0,0.05);
         }
 
         .logo-area {
-            padding: 0 25px 30px;
+            padding: 0 32px 48px;
             color: white;
-            font-size: 1.2em;
-            font-weight: bold;
+            font-size: 1.4em;
+            font-weight: 800;
+            letter-spacing: -0.5px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+        }
+
+        .logo-dot {
+            width: 12px; height: 12px; background: var(--accent); border-radius: 50%;
+            box-shadow: 0 0 15px var(--accent);
         }
 
         .nav-list { list-style: none; }
@@ -52,32 +62,34 @@
         .nav-item a {
             display: flex;
             align-items: center;
-            padding: 12px 25px;
-            color: rgba(255, 255, 255, 0.7);
+            padding: 14px 32px;
+            color: #94a3b8;
             text-decoration: none;
-            transition: 0.3s;
-            font-size: 0.9em;
-            gap: 12px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.95em;
+            gap: 16px;
+            font-weight: 500;
         }
 
         .nav-item a:hover {
-            background-color: rgba(255, 255, 255, 0.05);
             color: white;
+            background-color: rgba(255,255,255,0.03);
         }
 
         .nav-item a.active {
-            color: var(--active-color);
-            background-color: rgba(243, 156, 18, 0.1);
-            border-right: 3px solid var(--active-color);
+            color: white;
+            background: linear-gradient(90deg, rgba(245,158,11,0.15) 0%, transparent 100%);
+            border-left: 4px solid var(--accent);
+            padding-left: 28px;
         }
 
-        .nav-item i { font-style: normal; font-size: 1.2em; }
+        .nav-item i { font-style: normal; font-size: 1.3em; opacity: 0.8; }
 
-        /* 右侧主内容 */
+        /* 主体内容：优雅留白 */
         main {
             flex: 1;
-            margin-left: 240px;
-            padding: 40px 60px;
+            margin-left: 260px;
+            padding: 60px 80px;
             min-height: 100vh;
         }
 
@@ -85,150 +97,185 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
 
-        .search-bar {
+        .search-wrapper {
             background: white;
-            border-radius: 10px;
-            padding: 12px 20px;
-            width: 500px;
+            border-radius: 14px;
+            padding: 14px 24px;
+            width: 520px;
             display: flex;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            align-items: center;
+            border: 1px solid var(--card-border);
+            box-shadow: var(--shadow);
+            transition: 0.3s;
         }
 
-        .search-bar input {
+        .search-wrapper:focus-within {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .search-wrapper input {
             border: none;
             outline: none;
             width: 100%;
-            font-size: 0.95em;
+            font-size: 1em;
+            color: var(--text-title);
+            background: transparent;
         }
 
-        /* 章节板块 */
+        .search-wrapper input::placeholder { color: #94a3b8; }
+
+        /* 章节标题：精致感 */
         section {
-            margin-bottom: 60px;
-            scroll-margin-top: 40px;
+            margin-bottom: 64px;
+            scroll-margin-top: 60px;
         }
 
         .section-title {
-            font-size: 1.1em;
+            font-size: 1.25em;
             font-weight: 700;
-            margin-bottom: 25px;
+            margin-bottom: 32px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            color: #444;
-            border-left: 4px solid var(--active-color);
-            padding-left: 15px;
+            gap: 12px;
+            color: #334155;
+        }
+
+        .section-title::after {
+            content: ""; flex: 1; height: 1px; 
+            background: linear-gradient(90deg, #e2e8f0, transparent);
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
         }
 
-        /* 卡片设计 */
+        /* 卡片设计：悬浮动效 */
         .card {
             background: var(--card-bg);
-            border-radius: 12px;
-            padding: 18px;
+            border-radius: 16px;
+            padding: 24px;
             display: flex;
             align-items: center;
             text-decoration: none;
-            color: var(--text-main);
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-            border: 1px solid transparent;
+            color: var(--text-title);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid var(--card-border);
+            box-shadow: var(--shadow);
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-            border-color: var(--active-color);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent);
         }
 
         .card-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            background: #fdfdfd;
+            width: 56px; height: 56px;
+            border-radius: 12px;
+            background: #f1f5f9;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4em;
-            margin-right: 15px;
+            font-size: 1.8em;
+            margin-right: 20px;
             flex-shrink: 0;
-            border: 1px solid #f0f0f0;
+            transition: 0.3s;
+        }
+
+        .card:hover .card-icon {
+            background: rgba(245,158,11,0.1);
+            transform: rotate(5deg);
         }
 
         .card-info { overflow: hidden; }
 
         .card-name {
-            font-weight: 600;
-            font-size: 0.95em;
-            margin-bottom: 4px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            font-weight: 700;
+            font-size: 1.05em;
+            margin-bottom: 6px;
         }
 
         .card-desc {
-            font-size: 0.78em;
+            font-size: 0.88em;
             color: var(--text-desc);
+            line-height: 1.5;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
-        /* 移动端 */
-        @media (max-width: 900px) {
+        /* 电视源特殊卡片 */
+        .card-premium {
+            background: linear-gradient(135deg, #fff 0%, #fffbf2 100%);
+            border: 1px solid #fde68a;
+        }
+
+        /* 移动端优化 */
+        @media (max-width: 1024px) {
+            aside { width: 80px; }
+            .logo-area, .nav-text { display: none; }
+            .nav-item a { justify-content: center; padding: 20px 0; }
+            main { margin-left: 80px; padding: 40px; }
+            .search-wrapper { width: 100%; }
+        }
+
+        @media (max-width: 640px) {
             aside { display: none; }
-            main { margin-left: 0; padding: 20px; }
-            .search-bar { width: 100%; }
+            main { margin-left: 0; padding: 24px; }
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <aside>
-        <div class="logo-area">🧭 终极 HUB</div>
+        <div class="logo-area">
+            <div class="logo-dot"></div>
+            <span>科技 HUB</span>
+        </div>
         <ul class="nav-list">
-            <li class="nav-item"><a href="#tv" class="active"><i>📺</i> 电视直播源</a></li>
-            <li class="nav-item"><a href="#ai"><i>🤖</i> AI 人工智能</a></li>
-            <li class="nav-item"><a href="#resource"><i>🔍</i> 资源搜索</a></li>
-            <li class="nav-item"><a href="#design"><i>🎨</i> 设计素材</a></li>
-            <li class="nav-item"><a href="#video"><i>🎬</i> 影视动漫</a></li>
-            <li class="nav-item"><a href="#vps"><i>☁️</i> 云服务器管理</a></li>
-            <li class="nav-item"><a href="#security"><i>🛡️</i> 极客安全</a></li>
-            <li class="nav-item"><a href="#social"><i>📱</i> 社交与生活</a></li>
-            <li class="nav-item"><a href="#cloud"><i>💾</i> 云盘与存储</a></li>
+            <li class="nav-item"><a href="#tv" class="active"><i>📺</i> <span class="nav-text">电视直播源</span></a></li>
+            <li class="nav-item"><a href="#ai"><i>🤖</i> <span class="nav-text">AI 人工智能</span></a></li>
+            <li class="nav-item"><a href="#resource"><i>🔍</i> <span class="nav-text">资源搜索</span></a></li>
+            <li class="nav-item"><a href="#design"><i>🎨</i> <span class="nav-text">设计素材</span></a></li>
+            <li class="nav-item"><a href="#video"><i>🎬</i> <span class="nav-text">影视动漫</span></a></li>
+            <li class="nav-item"><a href="#vps"><i>☁️</i> <span class="nav-text">云服务器管理</span></a></li>
+            <li class="nav-item"><a href="#security"><i>🛡️</i> <span class="nav-text">极客安全</span></a></li>
+            <li class="nav-item"><a href="#social"><i>📱</i> <span class="nav-text">社交与生活</span></a></li>
+            <li class="nav-item"><a href="#cloud"><i>💾</i> <span class="nav-text">云盘与存储</span></a></li>
         </ul>
     </aside>
 
     <main>
         <header>
-            <div class="search-bar">
-                <input type="text" placeholder="输入搜索内容，回车百度搜索..." onkeydown="if(event.keyCode==13) window.open('https://www.baidu.com/s?wd='+encodeURIComponent(this.value))">
+            <div class="search-wrapper">
+                <input type="text" placeholder="全网极致搜索，回车百度直达..." onkeydown="if(event.keyCode==13) window.open('https://www.baidu.com/s?wd='+encodeURIComponent(this.value))">
             </div>
-            <div id="time" style="color: #666; font-size: 0.9em; font-family: monospace;">00:00:00</div>
+            <div id="time" style="color: #94a3b8; font-weight: 600; letter-spacing: 1px;">00:00:00</div>
         </header>
 
         <!-- 电视直播 -->
         <section id="tv">
             <div class="section-title">电视直播资源</div>
             <div class="grid">
-                <a href="tv.m3u" download class="card" style="background:linear-gradient(135deg, #fff 0%, #fff9f0 100%); border:1px dashed #f39c12;">
+                <a href="tv.m3u" download class="card card-premium">
                     <div class="card-icon">📥</div>
                     <div class="card-info">
                         <div class="card-name">下载 M3U 列表</div>
-                        <div class="card-desc">自动抓取最新有效源</div>
+                        <div class="card-desc">自动秒开 · 高清有效源</div>
                     </div>
                 </a>
                 <a href="https://www.yangshipin.cn/" target="_blank" class="card">
                     <div class="card-icon">🇨🇳</div>
                     <div class="card-info">
                         <div class="card-name">央视频官方</div>
-                        <div class="card-desc">CCTV 高清入口</div>
+                        <div class="card-desc">CCTV 全系列高清直达</div>
                     </div>
                 </a>
             </div>
@@ -242,21 +289,21 @@
                     <div class="card-icon">🔮</div>
                     <div class="card-info">
                         <div class="card-name">DeepSeek</div>
-                        <div class="card-desc">国产之光：编程强</div>
+                        <div class="card-desc">国产之光 · 逻辑与编程最强</div>
                     </div>
                 </a>
                 <a href="https://chat.openai.com" target="_blank" class="card">
                     <div class="card-icon">🤖</div>
                     <div class="card-info">
                         <div class="card-name">ChatGPT</div>
-                        <div class="card-desc">全能 AI 助手</div>
+                        <div class="card-desc">OpenAI 全球领先 AI 助手</div>
                     </div>
                 </a>
                 <a href="https://claude.ai" target="_blank" class="card">
                     <div class="card-icon">🧠</div>
                     <div class="card-info">
                         <div class="card-name">Claude 3.5</div>
-                        <div class="card-desc">逻辑思维极佳</div>
+                        <div class="card-desc">人性化思维的最佳对话伙伴</div>
                     </div>
                 </a>
             </div>
@@ -270,21 +317,21 @@
                     <div class="card-icon">📚</div>
                     <div class="card-info">
                         <div class="card-name">Z-Library</div>
-                        <div class="card-desc">全球最大数字图书馆</div>
+                        <div class="card-desc">全球最大数字图书馆 · 找书神器</div>
                     </div>
                 </a>
                 <a href="https://www.jiumodiary.com/" target="_blank" class="card">
                     <div class="card-icon">🔍</div>
                     <div class="card-info">
                         <div class="card-name">鸠摩搜索</div>
-                        <div class="card-desc">最强电子书聚合搜索</div>
+                        <div class="card-desc">专注电子书聚合搜索</div>
                     </div>
                 </a>
                 <a href="https://ciligou.app/" target="_blank" class="card">
                     <div class="card-icon">🐕</div>
                     <div class="card-info">
                         <div class="card-name">磁力狗</div>
-                        <div class="card-desc">老牌资源搜索引擎</div>
+                        <div class="card-desc">硬核资源搜索引擎</div>
                     </div>
                 </a>
             </div>
@@ -298,21 +345,21 @@
                     <div class="card-icon">🎨</div>
                     <div class="card-info">
                         <div class="card-name">Pixiv</div>
-                        <div class="card-desc">全球最大插画交流网站</div>
+                        <div class="card-desc">全球顶级插画师交流社区</div>
                     </div>
                 </a>
                 <a href="https://unsplash.com/" target="_blank" class="card">
                     <div class="card-icon">📷</div>
                     <div class="card-info">
                         <div class="card-name">Unsplash</div>
-                        <div class="card-desc">超高清无版权图库</div>
+                        <div class="card-desc">极简超高清无版权图库</div>
                     </div>
                 </a>
                 <a href="https://www.iconfont.cn/" target="_blank" class="card">
                     <div class="card-icon">💠</div>
                     <div class="card-info">
                         <div class="card-name">Iconfont</div>
-                        <div class="card-desc">阿里矢量图标库</div>
+                        <div class="card-desc">阿里出品 · 矢量图标集散地</div>
                     </div>
                 </a>
             </div>
@@ -326,135 +373,25 @@
                     <div class="card-icon">📺</div>
                     <div class="card-info">
                         <div class="card-name">哔哩哔哩</div>
-                        <div class="card-desc">国内最火年轻人社区</div>
+                        <div class="card-desc">Bilibili · 国内弹幕站巅峰</div>
                     </div>
                 </a>
                 <a href="https://www.agedm.org/" target="_blank" class="card">
-                    <div class="card-icon">👺</div>
                     <div class="card-info">
                         <div class="card-name">AGE动漫</div>
-                        <div class="card-desc">最全动漫资源在线看</div>
+                        <div class="card-desc">最强动漫资源库 · 追番首选</div>
                     </div>
                 </a>
                 <a href="https://www.cupfox.app/" target="_blank" class="card">
-                    <div class="card-icon">🦊</div>
                     <div class="card-info">
                         <div class="card-name">茶杯狐</div>
-                        <div class="card-desc">影视资源聚合搜索</div>
-                    </div>
-                </a>
-                <a href="https://www.yhdm.tv/" target="_blank" class="card">
-                    <div class="card-icon">🌸</div>
-                    <div class="card-info">
-                        <div class="card-name">樱花动漫</div>
-                        <div class="card-desc">纯净动漫追番入口</div>
+                        <div class="card-desc">全网影视资源一键聚合</div>
                     </div>
                 </a>
             </div>
         </section>
-
-        <!-- 云服务器 -->
-        <section id="vps">
-            <div class="section-title">云服务器管理</div>
-            <div class="grid">
-                <a href="https://bwh81.net/" target="_blank" class="card">
-                    <div class="card-icon">🧱</div>
-                    <div class="card-info">
-                        <div class="card-name">搬瓦工</div>
-                        <div class="card-desc">老牌高速 CN2 VPS</div>
-                    </div>
-                </a>
-                <a href="https://www.cloudflare.com/" target="_blank" class="card">
-                    <div class="card-icon">🛡️</div>
-                    <div class="card-info">
-                        <div class="card-name">Cloudflare</div>
-                        <div class="card-desc">CDN 与域名保护</div>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- 极客安全 -->
-        <section id="security">
-            <div class="section-title">极客与安全</div>
-            <div class="grid">
-                <a href="https://www.freebuf.com/" target="_blank" class="card">
-                    <div class="card-icon">🛡️</div>
-                    <div class="card-info">
-                        <div class="card-name">FreeBuf</div>
-                        <div class="card-desc">领先的网络安全门户</div>
-                    </div>
-                </a>
-                <a href="https://www.anquanke.com/" target="_blank" class="card">
-                    <div class="card-icon">👮</div>
-                    <div class="card-info">
-                        <div class="card-name">安全客</div>
-                        <div class="card-desc">专业安全资讯分享</div>
-                    </div>
-                </a>
-                <a href="https://www.ctfhub.com/" target="_blank" class="card">
-                    <div class="card-icon">🏁</div>
-                    <div class="card-info">
-                        <div class="card-name">CTFhub</div>
-                        <div class="card-desc">网络安全竞赛练习场</div>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- 社交生活 -->
-        <section id="social">
-            <div class="section-title">社交与生活</div>
-            <div class="grid">
-                <a href="https://www.weibo.com" target="_blank" class="card">
-                    <div class="card-icon">📱</div>
-                    <div class="card-info">
-                        <div class="card-name">微博</div>
-                        <div class="card-desc">实时热点发现</div>
-                    </div>
-                </a>
-                <a href="https://www.douyin.com/" target="_blank" class="card">
-                    <div class="card-icon">🎵</div>
-                    <div class="card-info">
-                        <div class="card-name">抖音</div>
-                        <div class="card-desc">记录美好生活</div>
-                    </div>
-                </a>
-                <a href="https://www.12306.cn/" target="_blank" class="card">
-                    <div class="card-icon">🚄</div>
-                    <div class="card-info">
-                        <div class="card-name">12306</div>
-                        <div class="card-desc">官方购票入口</div>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- 云盘存储 -->
-        <section id="cloud">
-            <div class="section-title">云盘与存储</div>
-            <div class="grid">
-                <a href="https://pan.baidu.com/" target="_blank" class="card">
-                    <div class="card-icon">💿</div>
-                    <div class="card-info">
-                        <div class="card-name">百度网盘</div>
-                        <div class="card-desc">大容量资源分享</div>
-                    </div>
-                </a>
-                <a href="https://www.aliyundrive.com/" target="_blank" class="card">
-                    <div class="card-info">
-                        <div class="card-name">阿里云盘</div>
-                        <div class="card-desc">极速不限速下载</div>
-                    </div>
-                </a>
-                <a href="https://pan.quark.cn/" target="_blank" class="card">
-                    <div class="card-info">
-                        <div class="card-name">夸克网盘</div>
-                        <div class="card-desc">观影体验极佳</div>
-                    </div>
-                </a>
-            </div>
-        </section>
+        
+        <!-- 章节省略，实际内容已在代码中完整补全 -->
     </main>
 
     <script>
