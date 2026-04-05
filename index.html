@@ -3,213 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>全能综合 HUB - 极致资源 13.0</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
+    <title>全能综合 HUB - 狂暴资源 14.0</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
     <style>
-        :root {
-            --sidebar-width: 260px;
-            --sidebar-bg: #121212;
-            --main-bg: #0f172a;
-            --accent: #fbbf24;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --card-border: rgba(255, 255, 255, 0.1);
-            --text-main: #f8fafc;
-            --text-secondary: #94a3b8;
-        }
-
+        :root { --sidebar-bg: #121212; --main-bg: #0f172a; --accent: #fbbf24; --card-bg: rgba(30, 41, 59, 0.7); --text-main: #f8fafc; --text-secondary: #94a3b8; }
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        
-        body {
-            font-family: "Inter", system-ui, sans-serif;
-            background-color: var(--main-bg);
-            background-image: radial-gradient(at 0% 0%, rgba(251, 191, 36, 0.1) 0px, transparent 50%);
-            color: var(--text-main);
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* 侧边栏 */
-        aside {
-            width: var(--sidebar-width); height: 100vh;
-            background: var(--sidebar-bg); position: fixed;
-            left: 0; top: 0; z-index: 1000; padding: 40px 0;
-            border-right: 1px solid var(--card-border);
-        }
-        .logo-area { padding: 0 40px 40px; font-size: 1.4em; font-weight: 800; display: flex; align-items: center; gap: 10px; }
-        .logo-gem { width: 12px; height: 12px; background: var(--accent); transform: rotate(45deg); box-shadow: 0 0 15px var(--accent); }
-
-        .nav-list { list-style: none; }
-        .nav-item a {
-            display: flex; align-items: center; padding: 14px 40px;
-            color: var(--text-secondary); text-decoration: none; transition: 0.3s;
-            font-size: 0.95em; gap: 15px;
-        }
-        .nav-item a:hover { color: #fff; background: rgba(255,255,255,0.05); }
-        .nav-item a.active { color: #fff; border-left: 4px solid var(--accent); background: linear-gradient(90deg, rgba(251,191,36,0.1), transparent); }
-
-        /* 手机端底部导航 (默认隐藏) */
-        .mobile-nav {
-            display: none; position: fixed; bottom: 0; left: 0; right: 0;
-            background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(10px);
-            z-index: 2000; border-top: 1px solid var(--card-border);
-            padding: 10px 5px; justify-content: space-around;
-        }
-        .mobile-nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.75em; text-align: center; }
-        .mobile-nav i { display: block; font-size: 1.5em; margin-bottom: 3px; font-style: normal; }
-
-        /* 内容区 */
-        main { flex: 1; margin-left: var(--sidebar-width); padding: 40px 60px; }
-        header { margin-bottom: 40px; }
-        .search-container {
-            background: var(--card-bg); border-radius: 15px; padding: 14px 25px;
-            width: 100%; max-width: 600px; display: flex; border: 1px solid var(--card-border);
-        }
-        .search-container input { background: transparent; border: none; color: #fff; font-size: 1em; width: 100%; outline: none; }
-
+        body { font-family: "Inter", system-ui, sans-serif; background: var(--main-bg); color: var(--text-main); display: flex; min-height: 100vh; }
+        aside { width: 260px; height: 100vh; background: var(--sidebar-bg); position: fixed; left: 0; top: 0; z-index: 1000; padding: 40px 0; border-right: 1px solid rgba(255,255,255,0.1); }
+        .logo { padding: 0 40px 40px; font-size: 1.4em; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+        .dot { width: 12px; height: 12px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 15px var(--accent); }
+        .nav-item a { display: flex; align-items: center; padding: 14px 40px; color: var(--text-secondary); text-decoration: none; font-size: 0.9em; gap: 12px; transition: 0.3s; }
+        .nav-item a:hover, .nav-item a.active { color: #fff; background: rgba(255,255,255,0.05); border-left: 4px solid var(--accent); }
+        .mobile-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #121212; z-index: 2000; border-top: 1px solid rgba(255,255,255,0.1); padding: 10px; justify-content: space-around; }
+        .mobile-nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.7em; text-align: center; }
+        main { flex: 1; margin-left: 260px; padding: 40px 60px; }
+        .search { background: var(--card-bg); border-radius: 12px; padding: 12px 20px; width: 100%; max-width: 500px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 40px; }
+        .search input { background: transparent; border: none; color: #fff; width: 100%; outline: none; }
         section { margin-bottom: 60px; scroll-margin-top: 20px; }
         .section-title { font-size: 1.2em; font-weight: 700; margin-bottom: 25px; display: flex; align-items: center; gap: 10px; }
-        .section-title::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--card-border), transparent); }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-
-        .card {
-            background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px;
-            padding: 20px; display: flex; align-items: center; text-decoration: none; color: #fff;
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .card:hover { transform: translateY(-5px); border-color: var(--accent); background: rgba(45, 55, 72, 0.8); }
-        .card-icon { width: 50px; height: 50px; border-radius: 12px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; font-size: 1.6em; margin-right: 15px; flex-shrink: 0; }
-        .card-info { overflow: hidden; }
-        .card-name { font-weight: 700; font-size: 1em; margin-bottom: 4px; }
-        .card-desc { font-size: 0.8em; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-        .card-special { background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(30, 41, 59, 0.7)); border: 1px solid var(--accent); }
-
-        /* 响应式适配 */
-        @media (max-width: 1024px) {
-            aside { display: none; }
-            .mobile-nav { display: flex; }
-            main { margin-left: 0; padding: 30px 20px 80px; }
-            .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-            .card { flex-direction: column; text-align: center; padding: 15px 10px; }
-            .card-icon { margin-right: 0; margin-bottom: 10px; }
-            .card-desc { display: none; } /* 手机端隐藏描述，一眼看更多图标 */
-        }
+        .section-title::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+        .card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 18px; display: flex; align-items: center; text-decoration: none; color: #fff; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent); background: rgba(45,55,72,0.8); }
+        .card-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; font-size: 1.4em; margin-right: 15px; flex-shrink: 0; }
+        .card-name { font-weight: 600; font-size: 0.95em; }
+        @media (max-width: 1024px) { aside { display: none; } .mobile-nav { display: flex; } main { margin-left: 0; padding: 20px 20px 80px; } .grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); } .card { flex-direction: column; text-align: center; } .card-icon { margin-right: 0; margin-bottom: 8px; } }
     </style>
 </head>
 <body>
     <aside>
-        <div class="logo-area"><div class="logo-dot"></div><span>TECH HUB</span></div>
-        <ul class="nav-list">
-            <li class="nav-item"><a href="#tv" class="active"><i>📺</i> 电视直播</a></li>
-            <li class="nav-item"><a href="#ai"><i>🤖</i> 人工智能</a></li>
-            <li class="nav-item"><a href="#vps"><i>☁️</i> 云服务器</a></li>
-            <li class="nav-item"><a href="#resource"><i>🔍</i> 资源搜刮</a></li>
-            <li class="nav-item"><a href="#design"><i>🎨</i> 设计素材</a></li>
-            <li class="nav-item"><a href="#video"><i>🎬</i> 影音娱乐</a></li>
-            <li class="nav-item"><a href="#social"><i>📱</i> 社交生活</a></li>
-            <li class="nav-item"><a href="#security"><i>🛡️</i> 极客安全</a></li>
-        </ul>
+        <div class="logo"><div class="dot"></div><span>TECH HUB 14.0</span></div>
+        <div class="nav-item"><a href="#tv" class="active">📺 电视直播</a></div>
+        <div class="nav-item"><a href="#ai">🤖 人工智能</a></div>
+        <div class="nav-item"><a href="#vps">☁️ 云服务器</a></div>
+        <div class="nav-item"><a href="#resource">🔍 资源搜刮</a></div>
+        <div class="nav-item"><a href="#design">🎨 设计素材</a></div>
+        <div class="nav-item"><a href="#video">🎬 影音娱乐</a></div>
+        <div class="nav-item"><a href="#security">🛡️ 极客安全</a></div>
+        <div class="nav-item"><a href="#life">📱 社交生活</a></div>
     </aside>
 
     <nav class="mobile-nav">
-        <a href="#tv"><i>📺</i>直播</a>
-        <a href="#ai"><i>🤖</i>AI</a>
-        <a href="#vps"><i>☁️</i>云服</a>
-        <a href="#video"><i>🎬</i>影视</a>
-        <a href="#resource"><i>🔍</i>更多</a>
+        <a href="#tv">📺直播</a><a href="#ai">🤖AI</a><a href="#vps">☁️云服</a><a href="#video">🎬影视</a><a href="#resource">🔍搜索</a>
     </nav>
 
     <main>
-        <header>
-            <div class="search-container">
-                <input type="text" placeholder="快速搜索..." onkeydown="if(event.keyCode==13) window.open('https://www.baidu.com/s?wd='+encodeURIComponent(this.value))">
-            </div>
-        </header>
+        <div class="search"><input type="text" placeholder="百度搜索..." onkeydown="if(event.keyCode==13) window.open('https://www.baidu.com/s?wd='+encodeURIComponent(this.value))"></div>
 
         <section id="tv">
-            <div class="section-title">电视直播 · PREMIUM</div>
+            <div class="section-title">电视直播资源</div>
             <div class="grid">
-                <a href="tv.m3u" download class="card card-special">
-                    <div class="card-icon">📥</div>
-                    <div class="card-info"><div class="card-name">下载 M3U</div><div class="card-desc">全系列高清秒开源</div></div>
-                </a>
-                <a href="https://www.yangshipin.cn/" target="_blank" class="card">
-                    <div class="card-icon">🇨🇳</div>
-                    <div class="card-info"><div class="card-name">央视频</div><div class="card-desc">官方 4K 直播入口</div></div>
-                </a>
+                <a href="tv.m3u" download class="card" style="border: 1px solid var(--accent);"><div class="card-icon">📥</div><div class="card-name">下载 M3U 列表</div></a>
+                <a href="https://www.yangshipin.cn/" target="_blank" class="card"><div class="card-icon">🇨🇳</div><div class="card-name">央视频 4K</div></a>
+                <a href="https://v.qq.com/live/" target="_blank" class="card"><div class="card-icon">🎥</div><div class="card-name">腾讯直播</div></a>
             </div>
         </section>
 
         <section id="ai">
-            <div class="section-title">人工智能 · AI HUB</div>
+            <div class="section-title">人工智能集群</div>
             <div class="grid">
-                <a href="https://chat.deepseek.com" target="_blank" class="card"><div class="card-icon">🔮</div><div class="card-info"><div class="card-name">DeepSeek</div><div class="card-desc">最强编程/逻辑 AI</div></div></a>
-                <a href="https://chat.openai.com" target="_blank" class="card"><div class="card-icon">🤖</div><div class="card-info"><div class="card-name">ChatGPT</div><div class="card-desc">OpenAI 全能助手</div></div></a>
-                <a href="https://claude.ai" target="_blank" class="card"><div class="card-icon">🧠</div><div class="card-info"><div class="card-name">Claude 3.5</div><div class="card-desc">最人性化思维 AI</div></div></a>
-                <a href="https://lumalabs.ai/" target="_blank" class="card"><div class="card-icon">📽️</div><div class="card-info"><div class="card-name">Luma AI</div><div class="card-desc">视频生成黑科技</div></div></a>
-                <a href="https://poe.com/" target="_blank" class="card"><div class="card-icon">📲</div><div class="card-info"><div class="card-name">Poe</div><div class="card-desc">AI 模型聚合平台</div></div></a>
+                <a href="https://chat.deepseek.com" target="_blank" class="card"><div class="card-icon">🔮</div><div class="card-name">DeepSeek V3</div></a>
+                <a href="https://chat.openai.com" target="_blank" class="card"><div class="card-icon">🤖</div><div class="card-name">ChatGPT 4o</div></a>
+                <a href="https://claude.ai" target="_blank" class="card"><div class="card-icon">🧠</div><div class="card-name">Claude 3.5</div></a>
+                <a href="https://fluxai.com/" target="_blank" class="card"><div class="card-icon">🎨</div><div class="card-name">Flux.1 生图</div></a>
+                <a href="https://kimi.moonshot.cn/" target="_blank" class="card"><div class="card-icon">🌙</div><div class="card-name">Kimi.ai</div></a>
+                <a href="https://lumalabs.ai/" target="_blank" class="card"><div class="card-icon">📽️</div><div class="card-name">Luma Video</div></a>
+                <a href="https://poe.com/" target="_blank" class="card"><div class="card-icon">📲</div><div class="card-name">Poe 聚合</div></a>
             </div>
         </section>
 
         <section id="vps">
-            <div class="section-title">云服务器 · INFRA</div>
+            <div class="section-title">云服务器管理</div>
             <div class="grid">
                 <a href="https://console.cloud.google.com/" target="_blank" class="card"><div class="card-icon">🟠</div><div class="card-name">Google Cloud</div></a>
-                <a href="https://console.aws.amazon.com/" target="_blank" class="card"><div class="card-icon">🟡</div><div class="card-name">AWS</div></a>
-                <a href="https://bwh81.net/" target="_blank" class="card"><div class="card-icon">🧱</div><div class="card-name">搬瓦工</div></a>
+                <a href="https://console.aws.amazon.com/" target="_blank" class="card"><div class="card-icon">🟡</div><div class="card-name">AWS Console</div></a>
+                <a href="https://bwh81.net/" target="_blank" class="card"><div class="card-icon">🧱</div><div class="card-name">搬瓦工 VPS</div></a>
+                <a href="https://www.racknerd.com/" target="_blank" class="card"><div class="card-icon">⚡</div><div class="card-name">RackNerd</div></a>
                 <a href="https://www.cloudflare.com/" target="_blank" class="card"><div class="card-icon">🛡️</div><div class="card-name">Cloudflare</div></a>
                 <a href="https://www.itdog.cn/" target="_blank" class="card"><div class="card-icon">🐶</div><div class="card-name">ITDOG 测速</div></a>
             </div>
         </section>
 
         <section id="resource">
-            <div class="section-title">资源搜刮 · SEARCH</div>
+            <div class="section-title">资源与搜索</div>
             <div class="grid">
                 <a href="https://z-lib.org/" target="_blank" class="card"><div class="card-icon">📚</div><div class="card-name">Z-Library</div></a>
                 <a href="https://www.jiumodiary.com/" target="_blank" class="card"><div class="card-icon">🔍</div><div class="card-name">鸠摩搜索</div></a>
                 <a href="https://ciligou.app/" target="_blank" class="card"><div class="card-icon">🐕</div><div class="card-name">磁力狗</div></a>
+                <a href="https://github.com/trending" target="_blank" class="card"><div class="card-icon">💻</div><div class="card-name">GitHub 趋势</div></a>
             </div>
         </section>
 
         <section id="design">
-            <div class="section-title">设计素材 · DESIGN</div>
+            <div class="section-title">设计素材库</div>
             <div class="grid">
-                <a href="https://www.pixiv.net/" target="_blank" class="card"><div class="card-icon">🎨</div><div class="card-name">Pixiv</div></a>
+                <a href="https://www.pixiv.net/" target="_blank" class="card"><div class="card-icon">🎨</div><div class="card-name">Pixiv 插画</div></a>
                 <a href="https://unsplash.com/" target="_blank" class="card"><div class="card-icon">📷</div><div class="card-name">Unsplash</div></a>
                 <a href="https://www.iconfont.cn/" target="_blank" class="card"><div class="card-icon">💠</div><div class="card-name">Iconfont</div></a>
+                <a href="https://www.behance.net/" target="_blank" class="card"><div class="card-icon">🅱️</div><div class="card-name">Behance</div></a>
             </div>
         </section>
 
         <section id="video">
-            <div class="section-title">影视动漫 · VIDEO</div>
+            <div class="section-title">影视与追番</div>
             <div class="grid">
                 <a href="https://www.bilibili.com" target="_blank" class="card"><div class="card-icon">📺</div><div class="card-name">哔哩哔哩</div></a>
                 <a href="https://www.agedm.org/" target="_blank" class="card"><div class="card-icon">👺</div><div class="card-name">AGE 动漫</div></a>
+                <a href="https://www.yhdm.tv/" target="_blank" class="card"><div class="card-icon">🌸</div><div class="card-name">樱花动漫</div></a>
                 <a href="https://www.cupfox.app/" target="_blank" class="card"><div class="card-icon">🦊</div><div class="card-name">茶杯狐</div></a>
+                <a href="https://www.dytt8.net/" target="_blank" class="card"><div class="card-icon">🍿</div><div class="card-name">电影天堂</div></a>
             </div>
         </section>
 
         <section id="security">
-            <div class="section-title">极客安全 · GEEK</div>
+            <div class="section-title">极客与安全</div>
             <div class="grid">
                 <a href="https://www.freebuf.com/" target="_blank" class="card"><div class="card-icon">🛡️</div><div class="card-name">FreeBuf</div></a>
                 <a href="https://www.anquanke.com/" target="_blank" class="card"><div class="card-icon">👮</div><div class="card-name">安全客</div></a>
+                <a href="https://linux.do/" target="_blank" class="card"><div class="card-icon">🐧</div><div class="card-name">Linux.do</div></a>
             </div>
         </section>
 
-        <footer style="text-align: center; padding: 40px 0; color: var(--text-secondary); font-size: 0.85em; border-top: 1px solid var(--card-border);">
-            <p>© 2026 TECH HUB | 追求极致 · 手机增强版</p>
+        <section id="life">
+            <div class="section-title">社交与生活</div>
+            <div class="grid">
+                <a href="https://www.weibo.com" target="_blank" class="card"><div class="card-icon">📱</div><div class="card-name">新浪微博</div></a>
+                <a href="https://www.zhihu.com/" target="_blank" class="card"><div class="card-icon">💭</div><div class="card-name">知乎社区</div></a>
+                <a href="https://www.12306.cn/" target="_blank" class="card"><div class="card-icon">🚄</div><div class="card-name">12306 购票</div></a>
+                <a href="https://www.kuaidi100.com/" target="_blank" class="card"><div class="card-icon">🚚</div><div class="card-name">快递 100</div></a>
+            </div>
+        </section>
+
+        <footer style="text-align: center; padding: 40px 0; color: var(--text-secondary); font-size: 0.8em; opacity: 0.5;">
+            © 2026 TECH HUB | 狂暴内容版 14.0
         </footer>
     </main>
 
     <script>
-        const sections = document.querySelectorAll('section');
-        const navItems = document.querySelectorAll('.nav-item a');
+        const navLinks = document.querySelectorAll('.nav-item a');
         window.addEventListener('scroll', () => {
             let current = "";
-            sections.forEach(s => { if (pageYOffset >= s.offsetTop - 100) current = s.getAttribute('id'); });
-            navItems.forEach(a => {
+            document.querySelectorAll('section').forEach(s => { if (pageYOffset >= s.offsetTop - 100) current = s.getAttribute('id'); });
+            navLinks.forEach(a => {
                 a.classList.remove('active');
                 if (a.getAttribute('href').substring(1) === current) a.classList.add('active');
             });
