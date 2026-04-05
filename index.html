@@ -11,6 +11,7 @@
         body { font-family: "Inter", "PingFang SC", sans-serif; background-color: var(--main-bg); color: var(--text-main); display: flex; min-height: 100vh; overflow-x: hidden; }
         aside { width: var(--sidebar-width); height: 100vh; background: var(--sidebar-bg); position: fixed; left: 0; top: 0; z-index: 1000; padding: 30px 0; border-right: 1px solid var(--card-border); overflow-y: auto; }
         .logo { padding: 0 30px 30px; font-size: 1.3em; font-weight: 800; display: flex; align-items: center; gap: 8px; color: var(--accent); }
+        .dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
         .nav-item a { display: flex; align-items: center; padding: 10px 30px; color: var(--text-desc); text-decoration: none; font-size: 0.85em; gap: 10px; transition: 0.2s; }
         .nav-item a:hover, .nav-item a.active { color: #fff; background: rgba(255,255,255,0.05); border-left: 4px solid var(--accent); }
         main { flex: 1; margin-left: 220px; padding: 30px 50px; }
@@ -19,6 +20,7 @@
         .search input { background: transparent; border: none; color: #fff; width: 100%; outline: none; font-size: 1em; }
         section { margin-bottom: 50px; scroll-margin-top: 20px; }
         .section-title { font-size: 1.1em; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; color: #cbd5e1; }
+        .section-title::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,0.05); }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
         .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 12px 15px; display: flex; align-items: center; text-decoration: none; color: #fff; transition: 0.2s; backdrop-filter: blur(10px); }
         .card:hover { transform: translateY(-3px); border-color: var(--accent); background: rgba(45, 55, 72, 0.9); }
@@ -48,14 +50,15 @@
     <main>
         <header><div class="search"><input type="text" placeholder="百度搜索..." onkeydown="if(event.keyCode==13) window.open('https://www.baidu.com/s?wd='+encodeURIComponent(this.value))"></div><div id="time" style="color:var(--accent); font-weight:600; font-size:0.9em;">00:00</div></header>
 
-        <section id="tv"><div class="section-title">📺 电视直播 (实时同步中...)</div><div class="grid" id="tv-list">
-            <a href="tv.m3u" download class="card card-premium"><div class="card-icon">📥</div><div class="card-info"><div class="card-name">点击下载 M3U</div><div style="font-size:0.7em;color:var(--accent)">同步官方APP直播源</div></div></a>
-            <!-- 频道将由 JS 动态生成 -->
+        <section id="tv"><div class="section-title">📺 电视直播与论坛</div><div class="grid">
+            <a href="tv.m3u" download class="card card-premium"><div class="card-icon">📥</div><div class="card-info"><div class="card-name">下载 M3U 列表</div><div style="font-size:0.7em;color:var(--accent)">同步官方APP直连源</div></div></a>
+            <a href="https://www.right.com.cn/forum/forum-48-1.html" target="_blank" class="card"><div class="card-icon">📡</div><div class="card-name">恩山 IPTV</div></a>
+            <a href="https://www.yangshipin.cn/" target="_blank" class="card"><div class="card-icon">🇨🇳</div><div class="card-name">央视频 4K</div></a>
         </div></section>
 
-        <section id="apps"><div class="section-title">📱 软件下载 (APK)</div><div class="grid">
-            <a href="apps/DongYuTv.apk" class="card"><div class="card-icon">📺</div><div class="card-name">东娱 V1</div></a>
-            <a href="apps/DongYuTv_v2.apk" class="card"><div class="card-icon">📽️</div><div class="card-name">东娱 V2</div></a>
+        <section id="apps"><div class="section-title">📱 精品软件下载 (APK)</div><div class="grid">
+            <a href="apps/DongYuTv.apk" download class="card"><div class="card-icon">📺</div><div class="card-name">东娱 V1</div></a>
+            <a href="apps/DongYuTv_v2.apk" download class="card"><div class="card-icon">📽️</div><div class="card-name">东娱 V2</div></a>
         </div></section>
 
         <section id="ai"><div class="section-title">🤖 人工智能集群</div><div class="grid">
@@ -66,8 +69,13 @@
 
         <section id="search"><div class="section-title">🔍 全网资源搜刮</div><div class="grid">
             <a href="https://www.alipansou.com/" class="card"><div class="card-icon">☁️</div><div class="card-name">阿里盘搜</div></a>
+            <a href="https://www.pansearch.me/" class="card"><div class="card-icon">🔍</div><div class="card-name">PanSearch</div></a>
             <a href="https://z-lib.org/" class="card"><div class="card-icon">📚</div><div class="card-name">Z-Library</div></a>
-            <a href="https://ciligou.app/" class="card"><div class="card-icon">🐕</div><div class="card-name">磁力狗</div></a>
+        </div></section>
+
+        <section id="software"><div class="section-title">🛠️ 绿化软件下载</div><div class="grid">
+            <a href="https://macwk.com/" class="card"><div class="card-icon">🍏</div><div class="card-name">MacWK</div></a>
+            <a href="https://www.ghxi.com/" class="card"><div class="card-icon">🌰</div><div class="card-name">果核剥壳</div></a>
         </div></section>
 
         <section id="vps"><div class="section-title">☁️ 云端管理运维</div><div class="grid">
@@ -76,39 +84,11 @@
             <a href="https://www.cloudflare.com/" class="card"><div class="card-icon">🛡️</div><div class="card-name">Cloudflare</div></a>
         </div></section>
 
-        <section id="security"><div class="section-title">🛡️ 极客安全社区</div><div class="grid">
-            <a href="https://linux.do/" class="card"><div class="card-icon">🐧</div><div class="card-name">Linux.do</div></a>
-            <a href="https://bbs.kanxue.com/" class="card"><div class="card-icon">❄️</div><div class="card-name">看雪论坛</div></a>
-        </div></section>
-
-        <footer>© 2026 小爪导航 | 内容实时更新版</footer>
+        <footer>© 2026 小爪导航 | 极致纯净版</footer>
     </main>
     <script>
         function updateTime() { document.getElementById('time').textContent = new Date().toLocaleTimeString('zh-CN', { hour12: false }); }
         setInterval(updateTime, 1000); updateTime();
-        
-        async function loadTV() {
-            try {
-                const res = await fetch('tv.m3u');
-                const text = await res.text();
-                const lines = text.split('\n');
-                const grid = document.getElementById('tv-list');
-                let name = "";
-                for (let line of lines) {
-                    if (line.includes('#EXTINF')) { name = line.split(',')[1].trim(); }
-                    else if (line.startsWith('http')) {
-                        const url = line.trim();
-                        const a = document.createElement('a');
-                        a.href = url; a.className = "card"; a.target = "_blank";
-                        a.innerHTML = `<div class="card-icon">📺</div><div class="card-name">${name}</div>`;
-                        grid.appendChild(a);
-                        name = "";
-                    }
-                }
-            } catch (e) { console.error("源加载中..."); }
-        }
-        loadTV();
-
         const navLinks = document.querySelectorAll('.nav-item a');
         window.addEventListener('scroll', () => {
             let curr = ""; document.querySelectorAll('section').forEach(s => { if (pageYOffset >= s.offsetTop - 100) curr = s.getAttribute('id'); });
