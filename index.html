@@ -3,111 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小爪导航 - 2026最新高清电视直播源(m3u8) · 深度AI工具集 · 全能枢纽</title>
-    <meta name="description" content="小爪导航 (dh.790221.xyz) 是一款追求极致的全能综合导航站。提供每日自动更新的高清电视直播源下载、DeepSeek/Claude等全系列AI工具集、云服务器运维及全网极客资源搜索。">
-    <meta name="keywords" content="小爪导航, 2026直播源, 电视直播源下载, CCTV直播, 港台直播, m3u8订阅地址, DeepSeek导航, 云服务器管理, VPS测速, 资源搜索, 极简主页, 吾爱破解, NodeSeek, Linux.do">
+    <title>小爪导航 - 2026全网极客资源大全 · 海量收录</title>
+    <meta name="description" content="dh.790221.xyz 追求极致的全能综合导航。集成全网破解软件、摸鱼游戏、4K影视下载、AI大全及每日自动更新的电视直播源。">
     <link rel="canonical" href="http://dh.790221.xyz" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
     <style>
-        :root {
-            --sidebar-bg: #121212;
-            --main-bg: #0f172a;
-            --accent: #fbbf24;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --card-border: rgba(255, 255, 255, 0.1);
-            --text-main: #f8fafc;
-            --text-desc: #94a3b8;
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        }
-
+        :root { --sidebar-bg: #121212; --main-bg: #0f172a; --accent: #fbbf24; --card-bg: rgba(30, 41, 59, 0.7); --card-border: rgba(255, 255, 255, 0.1); --text-main: #f8fafc; --text-desc: #94a3b8; }
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        
-        body {
-            font-family: "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
-            background-color: var(--main-bg);
-            background-image: radial-gradient(at 0% 0%, rgba(251, 191, 36, 0.1) 0px, transparent 50%);
-            color: var(--text-main);
-            display: flex;
-            overflow-x: hidden;
-        }
-
-        aside {
-            width: 260px; height: 100vh;
-            background: var(--sidebar-bg);
-            position: fixed; left: 0; top: 0;
-            z-index: 1000; padding: 40px 0;
-            border-right: 1px solid var(--card-border);
-        }
-
-        .logo-area {
-            padding: 0 32px 40px; color: var(--accent);
-            font-size: 1.5em; font-weight: 800;
-            display: flex; align-items: center; gap: 12px;
-        }
-
+        body { font-family: "Inter", "PingFang SC", sans-serif; background-color: var(--main-bg); color: var(--text-main); display: flex; overflow-x: hidden; }
+        aside { width: 260px; height: 100vh; background: var(--sidebar-bg); position: fixed; left: 0; top: 0; z-index: 1000; padding: 40px 0; border-right: 1px solid var(--card-border); overflow-y: auto; }
+        .logo-area { padding: 0 32px 40px; color: var(--accent); font-size: 1.5em; font-weight: 800; display: flex; align-items: center; gap: 12px; }
         .nav-list { list-style: none; }
-        .nav-item a {
-            display: flex; align-items: center; padding: 14px 32px;
-            color: var(--text-desc); text-decoration: none; transition: 0.3s;
-            font-size: 0.95em; gap: 16px; font-weight: 500;
-        }
+        .nav-item a { display: flex; align-items: center; padding: 12px 32px; color: var(--text-desc); text-decoration: none; transition: 0.3s; font-size: 0.95em; gap: 16px; font-weight: 500; }
         .nav-item a:hover { color: white; background-color: rgba(255,255,255,0.05); }
         .nav-item a.active { color: white; border-left: 4px solid var(--accent); padding-left: 28px; background: linear-gradient(90deg, rgba(251,158,11,0.1) 0%, transparent 100%); }
-
-        .mobile-nav {
-            display: none; position: fixed; bottom: 0; left: 0; right: 0;
-            background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(10px);
-            z-index: 2000; border-top: 1px solid var(--card-border);
-            padding: 10px 5px; justify-content: space-around;
-        }
-        .mobile-nav a { color: var(--text-desc); text-decoration: none; font-size: 0.75em; text-align: center; }
+        .mobile-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(10px); z-index: 2000; border-top: 1px solid var(--card-border); padding: 10px 5px; justify-content: space-around; flex-wrap: wrap;}
+        .mobile-nav a { color: var(--text-desc); text-decoration: none; font-size: 0.75em; text-align: center; min-width: 20%; padding-bottom:5px;}
         .mobile-nav i { display: block; font-size: 1.5em; margin-bottom: 3px; font-style: normal; }
-
         main { flex: 1; margin-left: 260px; padding: 40px 60px; min-height: 100vh; }
-        
         header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; flex-wrap: wrap; gap: 20px; }
-
-        .search-wrapper {
-            background: var(--card-bg); border-radius: 15px; padding: 12px 24px;
-            width: 500px; display: flex; align-items: center;
-            border: 1px solid var(--card-border);
-        }
+        .search-wrapper { background: var(--card-bg); border-radius: 15px; padding: 12px 24px; width: 500px; display: flex; align-items: center; border: 1px solid var(--card-border); }
         .search-wrapper select { border:none; outline:none; background:transparent; font-size:0.9em; color:#94a3b8; cursor:pointer; margin-right:10px; }
         .search-wrapper select option { background: var(--sidebar-bg); }
         .search-wrapper input { border: none; outline: none; width: 100%; font-size: 1em; background: transparent; color: white; }
-
         section { margin-bottom: 60px; scroll-margin-top: 50px; }
         .section-title { font-size: 1.3em; font-weight: 700; margin-bottom: 25px; color: var(--text-main); display: flex; align-items: center; gap: 10px; }
         .section-title::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--card-border), transparent); }
-
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-
-        .card {
-            background: var(--card-bg); border-radius: 16px; padding: 22px;
-            display: flex; align-items: center; text-decoration: none; color: white;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 1px solid var(--card-border); backdrop-filter: blur(10px);
-        }
+        .card { background: var(--card-bg); border-radius: 16px; padding: 22px; display: flex; align-items: center; text-decoration: none; color: white; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); border: 1px solid var(--card-border); backdrop-filter: blur(10px); }
         .card:hover { transform: translateY(-8px); border-color: var(--accent); background: rgba(45, 55, 72, 0.8); }
-
         .card-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; font-size: 1.6em; margin-right: 18px; flex-shrink: 0; }
         .card-info { overflow: hidden; }
         .card-name { font-weight: 700; font-size: 1em; margin-bottom: 4px; }
         .card-desc { font-size: 0.85em; color: var(--text-desc); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
         .card-premium { background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(30, 41, 59, 0.7)); border: 1px solid var(--accent); }
-
-        @media (max-width: 1024px) {
-            aside { display: none; }
-            .mobile-nav { display: flex; }
-            main { margin-left: 0; padding: 30px 20px 80px; }
-            .search-wrapper { width: 100%; }
-            .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-            .card { flex-direction: column; text-align: center; padding: 15px 10px; }
-            .card-icon { margin-right: 0; margin-bottom: 10px; }
-            .card-desc { display: none; }
-        }
-
+        @media (max-width: 1024px) { aside { display: none; } .mobile-nav { display: flex; } main { margin-left: 0; padding: 30px 20px 100px; } .search-wrapper { width: 100%; } .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; } .card { flex-direction: column; text-align: center; padding: 15px 10px; } .card-icon { margin-right: 0; margin-bottom: 10px; } .card-desc { display: none; } }
         footer { text-align: center; padding: 60px 20px; color: var(--text-desc); font-size: 0.9em; border-top: 1px solid var(--card-border); margin-top: 40px; }
     </style>
 </head>
@@ -117,21 +47,19 @@
         <ul class="nav-list">
             <li class="nav-item"><a href="#tv" class="active"><i>📺</i> 电视直播</a></li>
             <li class="nav-item"><a href="#ai"><i>🤖</i> AI 智能</a></li>
+            <li class="nav-item"><a href="#software"><i>🛠️</i> 绿化软件</a></li>
             <li class="nav-item"><a href="#resource"><i>🔍</i> 资源搜索</a></li>
-            <li class="nav-item"><a href="#video"><i>🎬</i> 影视追剧</a></li>
+            <li class="nav-item"><a href="#video"><i>🎬</i> 影视动漫</a></li>
+            <li class="nav-item"><a href="#vps"><i>☁️</i> 云服与工具</a></li>
             <li class="nav-item"><a href="#design"><i>🎨</i> 设计素材</a></li>
-            <li class="nav-item"><a href="#vps"><i>☁️</i> 云服务器</a></li>
             <li class="nav-item"><a href="#security"><i>🛡️</i> 极客安全</a></li>
+            <li class="nav-item"><a href="#game"><i>🎮</i> 摸鱼游戏</a></li>
             <li class="nav-item"><a href="#life"><i>📱</i> 社交生活</a></li>
         </ul>
     </aside>
 
     <nav class="mobile-nav">
-        <a href="#tv"><i>📺</i>直播</a>
-        <a href="#ai"><i>🤖</i>智能</a>
-        <a href="#resource"><i>🔍</i>搜索</a>
-        <a href="#video"><i>🎬</i>影视</a>
-        <a href="#vps"><i>☁️</i>极客</a>
+        <a href="#tv"><i>📺</i>直播</a><a href="#ai"><i>🤖</i>AI</a><a href="#software"><i>🛠️</i>软件</a><a href="#video"><i>🎬</i>影视</a><a href="#game"><i>🎮</i>摸鱼</a>
     </nav>
 
     <main>
@@ -149,15 +77,13 @@
             <div id="time" style="color: var(--accent); font-weight: 600; letter-spacing: 1px;">00:00:00</div>
         </header>
 
+        <!-- 电视直播 -->
         <section id="tv">
             <div class="section-title">📺 电视直播源 (每日体检更新)</div>
             <div class="grid">
                 <a href="tv.m3u" download class="card card-premium">
                     <div class="card-icon">📥</div>
-                    <div class="card-info">
-                        <div class="card-name">下载 M3U 列表</div>
-                        <div class="card-desc">高清秒开 · 永久自动更新订阅</div>
-                    </div>
+                    <div class="card-info"><div class="card-name">下载 M3U 列表</div><div class="card-desc">高清秒开 · 永久自动更新订阅</div></div>
                 </a>
                 <a href="https://www.yangshipin.cn/" target="_blank" class="card">
                     <div class="card-icon">🇨🇳</div>
@@ -166,83 +92,113 @@
             </div>
         </section>
 
+        <!-- 破解与绿化软件 -->
+        <section id="software">
+            <div class="section-title">🛠️ 破解与绿化软件下载</div>
+            <div class="grid">
+                <a href="https://macwk.com/" target="_blank" class="card"><div class="card-icon">🍏</div><div class="card-info"><div class="card-name">MacWK</div><div class="card-desc">全网最全 Mac 破解软件站</div></div></a>
+                <a href="https://www.ghxi.com/" target="_blank" class="card"><div class="card-icon">🌰</div><div class="card-info"><div class="card-name">果核剥壳</div><div class="card-desc">精品绿色/破解软件分享下载</div></div></a>
+                <a href="http://www.downza.cn/" target="_blank" class="card"><div class="card-icon">⬇️</div><div class="card-info"><div class="card-name">下载吧</div><div class="card-desc">老牌软件与单机游戏下载站</div></div></a>
+                <a href="https://www.sysin.org/" target="_blank" class="card"><div class="card-icon">💿</div><div class="card-info"><div class="card-name">SYSIN</div><div class="card-desc">纯净无修改版原版系统镜像镜像</div></div></a>
+            </div>
+        </section>
+
+        <!-- AI工具 -->
         <section id="ai">
-            <div class="section-title">🤖 人工智能 (大模型与工具)</div>
+            <div class="section-title">🤖 人工智能集群 · LLM</div>
             <div class="grid">
-                <a href="https://chat.deepseek.com" target="_blank" class="card"><div class="card-icon">🔮</div><div class="card-info"><div class="card-name">DeepSeek</div><div class="card-desc">国产之光：逻辑推理与编程极强</div></div></a>
-                <a href="https://chat.openai.com" target="_blank" class="card"><div class="card-icon">🤖</div><div class="card-info"><div class="card-name">ChatGPT</div><div class="card-desc">OpenAI 全能型工作助手</div></div></a>
+                <a href="https://chat.deepseek.com" target="_blank" class="card"><div class="card-icon">🔮</div><div class="card-info"><div class="card-name">DeepSeek V3</div><div class="card-desc">国产逻辑/编程最强大模型</div></div></a>
+                <a href="https://chat.openai.com" target="_blank" class="card"><div class="card-icon">🤖</div><div class="card-info"><div class="card-name">ChatGPT</div><div class="card-desc">OpenAI 全能助手与深度思考</div></div></a>
                 <a href="https://chatglm.cn/" target="_blank" class="card"><div class="card-icon">🧠</div><div class="card-info"><div class="card-name">智谱清言</div><div class="card-desc">清华系超强国产全能 AI</div></div></a>
-                <a href="https://kimi.moonshot.cn/" target="_blank" class="card"><div class="card-icon">🌙</div><div class="card-info"><div class="card-name">Kimi.ai</div><div class="card-desc">超长文档阅读与分析专家</div></div></a>
-                <a href="https://yuanbao.tencent.com/" target="_blank" class="card"><div class="card-icon">🐧</div><div class="card-info"><div class="card-name">腾讯元宝</div><div class="card-desc">背靠微信生态的智能助手</div></div></a>
-                <a href="https://metaso.cn/" target="_blank" class="card"><div class="card-icon">🔍</div><div class="card-info"><div class="card-name">秘塔 AI 搜索</div><div class="card-desc">没有广告的清爽搜索体验</div></div></a>
+                <a href="https://kimi.moonshot.cn/" target="_blank" class="card"><div class="card-icon">🌙</div><div class="card-info"><div class="card-name">Kimi.ai</div><div class="card-desc">支持超长 200 万字阅读解析</div></div></a>
+                <a href="https://metaso.cn/" target="_blank" class="card"><div class="card-icon">🔍</div><div class="card-info"><div class="card-name">秘塔 AI 搜索</div><div class="card-desc">无广告的下一代智能搜索引擎</div></div></a>
+                <a href="https://yuanbao.tencent.com/" target="_blank" class="card"><div class="card-icon">🐧</div><div class="card-info"><div class="card-name">腾讯元宝</div><div class="card-desc">打通微信公号生态的智能 AI</div></div></a>
             </div>
         </section>
 
+        <!-- 资源搜索 -->
         <section id="resource">
-            <div class="section-title">🔍 资源搜刮 (网盘与文档)</div>
+            <div class="section-title">🔍 全网资源搜刮 · 网盘/磁力</div>
             <div class="grid">
-                <a href="https://www.pansearch.me/" target="_blank" class="card"><div class="card-icon">🔍</div><div class="card-info"><div class="card-name">PanSearch</div><div class="card-desc">最好用的阿里云盘资源搜索</div></div></a>
-                <a href="https://www.alipansou.com/" target="_blank" class="card"><div class="card-icon">☁️</div><div class="card-info"><div class="card-name">阿里盘搜</div><div class="card-desc">海量影视、考研资料搜索引擎</div></div></a>
-                <a href="https://www.jiumodiary.com/" target="_blank" class="card"><div class="card-icon">📚</div><div class="card-info"><div class="card-name">鸠摩搜书</div><div class="card-desc">极简全网电子书免费下载</div></div></a>
-                <a href="https://ciligou.app/" target="_blank" class="card"><div class="card-icon">🐕</div><div class="card-info"><div class="card-name">磁力狗</div><div class="card-desc">老牌强劲的磁力链接引擎</div></div></a>
+                <a href="https://www.pansearch.me/" target="_blank" class="card"><div class="card-icon">🔍</div><div class="card-info"><div class="card-name">PanSearch</div><div class="card-desc">极速阿里云盘/夸克资源搜索</div></div></a>
+                <a href="https://www.alipansou.com/" target="_blank" class="card"><div class="card-icon">☁️</div><div class="card-info"><div class="card-name">阿里盘搜</div><div class="card-desc">海量超清影视、考研资料搜索引擎</div></div></a>
+                <a href="https://www.jiumodiary.com/" target="_blank" class="card"><div class="card-icon">📚</div><div class="card-info"><div class="card-name">鸠摩搜书</div><div class="card-desc">全网最强 Kindle/PDF 免费下</div></div></a>
+                <a href="https://ciligou.app/" target="_blank" class="card"><div class="card-icon">🐕</div><div class="card-info"><div class="card-name">磁力狗</div><div class="card-desc">无视敏感的磁力链接引擎</div></div></a>
+                <a href="https://www.4ksj.com/" target="_blank" class="card"><div class="card-icon">🎞️</div><div class="card-info"><div class="card-name">4K世界</div><div class="card-desc">专业级 4K 原盘蓝光电影下载</div></div></a>
             </div>
         </section>
 
+        <!-- 影视动漫 -->
         <section id="video">
-            <div class="section-title">🎬 影视追番 (防失联)</div>
+            <div class="section-title">🎬 影视与追番 (防失联)</div>
             <div class="grid">
-                <a href="https://www.bilibili.com" target="_blank" class="card"><div class="card-icon">📺</div><div class="card-info"><div class="card-name">哔哩哔哩</div><div class="card-desc">国内弹幕视频文化核心阵地</div></div></a>
-                <a href="https://danmu.tv/" target="_blank" class="card"><div class="card-icon">🍿</div><div class="card-info"><div class="card-name">弹幕网</div><div class="card-desc">无广告、多线路高清影视大站</div></div></a>
-                <a href="https://dsxys.pro/" target="_blank" class="card"><div class="card-icon">🎬</div><div class="card-info"><div class="card-name">大师兄影视</div><div class="card-desc">超火热的在线秒播影剧院</div></div></a>
+                <a href="https://www.bilibili.com" target="_blank" class="card"><div class="card-icon">📺</div><div class="card-info"><div class="card-name">哔哩哔哩</div><div class="card-desc">国内弹幕文化与学习核心阵地</div></div></a>
+                <a href="https://danmu.tv/" target="_blank" class="card"><div class="card-icon">🍿</div><div class="card-info"><div class="card-name">弹幕网</div><div class="card-desc">无广告、多线路免费高清看</div></div></a>
+                <a href="https://dsxys.pro/" target="_blank" class="card"><div class="card-icon">🎬</div><div class="card-info"><div class="card-name">大师兄影视</div><div class="card-desc">超火热的在线秒播影院</div></div></a>
                 <a href="https://www.nivod.tv/" target="_blank" class="card"><div class="card-icon">泥</div><div class="card-info"><div class="card-name">泥巴影院</div><div class="card-desc">海外华人的专属追剧天堂</div></div></a>
+                <a href="https://yhdm.nl/" target="_blank" class="card"><div class="card-icon">🌸</div><div class="card-info"><div class="card-name">樱花动漫</div><div class="card-desc">全网更新最快的动漫新番站</div></div></a>
             </div>
         </section>
 
+        <!-- 云服务器 -->
+        <section id="vps">
+            <div class="section-title">☁️ 云端管理与运维工具</div>
+            <div class="grid">
+                <a href="https://console.cloud.google.com/" target="_blank" class="card"><div class="card-icon">🟠</div><div class="card-info"><div class="card-name">Google Cloud</div><div class="card-desc">GCP 全球云控制台</div></div></a>
+                <a href="https://bwh81.net/" target="_blank" class="card"><div class="card-icon">🧱</div><div class="card-info"><div class="card-name">搬瓦工</div><div class="card-desc">极速 CN2 GIA 高速直连线路</div></div></a>
+                <a href="https://www.itdog.cn/" target="_blank" class="card"><div class="card-icon">🐶</div><div class="card-info"><div class="card-name">ITDOG</div><div class="card-desc">专业在线网络连通性测速</div></div></a>
+                <a href="https://www.bt.cn/" target="_blank" class="card"><div class="card-icon">🧱</div><div class="card-info"><div class="card-name">宝塔面板</div><div class="card-desc">最流行的服务器自动化管理</div></div></a>
+                <a href="https://www.cloudflare.com/" target="_blank" class="card"><div class="card-icon">🛡️</div><div class="card-info"><div class="card-name">Cloudflare</div><div class="card-desc">CDN 与防 DDoS 攻击核心站</div></div></a>
+                <a href="https://dockerproxy.com/" target="_blank" class="card"><div class="card-icon">🐳</div><div class="card-info"><div class="card-name">Docker 镜像源</div><div class="card-desc">国内极速拉取容器服务</div></div></a>
+            </div>
+        </section>
+
+        <!-- 极客安全 -->
+        <section id="security">
+            <div class="section-title">🛡️ 极客与安全社区</div>
+            <div class="grid">
+                <a href="https://www.freebuf.com/" target="_blank" class="card"><div class="card-icon">🛡️</div><div class="card-info"><div class="card-name">FreeBuf</div><div class="card-desc">领先的网络安全新媒体</div></div></a>
+                <a href="https://bbs.kanxue.com/" target="_blank" class="card"><div class="card-icon">❄️</div><div class="card-info"><div class="card-name">看雪论坛</div><div class="card-desc">国内顶尖安全技术与逆向工程</div></div></a>
+                <a href="https://linux.do/" target="_blank" class="card"><div class="card-icon">🐧</div><div class="card-info"><div class="card-name">Linux.do</div><div class="card-desc">全新的硬核极客发烧友社区</div></div></a>
+                <a href="https://github.com/trending" target="_blank" class="card"><div class="card-icon">📈</div><div class="card-info"><div class="card-name">GitHub 趋势榜</div><div class="card-desc">发现今日全球最火爆的开源项目</div></div></a>
+            </div>
+        </section>
+
+        <!-- 摸鱼游戏 -->
+        <section id="game">
+            <div class="section-title">🎮 摸鱼与街机游戏</div>
+            <div class="grid">
+                <a href="https://yikm.net/" target="_blank" class="card"><div class="card-icon">🕹️</div><div class="card-info"><div class="card-name">小霸王其乐无穷</div><div class="card-desc">在线畅玩魂斗罗、超级玛丽</div></div></a>
+                <a href="https://poki.com/zh" target="_blank" class="card"><div class="card-icon">🎮</div><div class="card-info"><div class="card-name">Poki 在线游戏</div><div class="card-desc">数千款免安装网页休闲小游戏</div></div></a>
+                <a href="https://play2048.co/" target="_blank" class="card"><div class="card-icon">🔢</div><div class="card-info"><div class="card-name">2048</div><div class="card-desc">根本停不下来的经典数字合成</div></div></a>
+            </div>
+        </section>
+
+        <!-- 设计素材 -->
         <section id="design">
-            <div class="section-title">🎨 设计创意 (素材图库)</div>
+            <div class="section-title">🎨 设计与创意图库</div>
             <div class="grid">
                 <a href="https://huaban.com/" target="_blank" class="card"><div class="card-icon">🌸</div><div class="card-info"><div class="card-name">花瓣网</div><div class="card-desc">设计师的灵感采集图库</div></div></a>
                 <a href="https://www.gaoding.com/" target="_blank" class="card"><div class="card-icon">🖌️</div><div class="card-info"><div class="card-name">稿定设计</div><div class="card-desc">小白也能一键做的高级海报</div></div></a>
                 <a href="https://www.iconfont.cn/" target="_blank" class="card"><div class="card-icon">💠</div><div class="card-info"><div class="card-name">Iconfont</div><div class="card-desc">阿里千万级矢量图标下载</div></div></a>
-                <a href="https://www.zcool.com.cn/" target="_blank" class="card"><div class="card-icon">🔵</div><div class="card-info"><div class="card-name">站酷 ZCOOL</div><div class="card-desc">综合性人气设计师互动社区</div></div></a>
-            </div>
-        </section>
-
-        <section id="vps">
-            <div class="section-title">☁️ 云端管理 (VPS与运维)</div>
-            <div class="grid">
-                <a href="https://console.cloud.google.com/" target="_blank" class="card"><div class="card-icon">🟠</div><div class="card-info"><div class="card-name">Google Cloud</div><div class="card-desc">GCP 全球云平台控制台</div></div></a>
-                <a href="https://bwh81.net/" target="_blank" class="card"><div class="card-icon">🧱</div><div class="card-info"><div class="card-name">搬瓦工</div><div class="card-desc">极速 CN2 GIA 高速直连线路</div></div></a>
-                <a href="https://www.itdog.cn/" target="_blank" class="card"><div class="card-icon">🐶</div><div class="card-info"><div class="card-name">ITDOG</div><div class="card-desc">专业在线网络连通性测速</div></div></a>
-                <a href="https://www.bt.cn/" target="_blank" class="card"><div class="card-icon">🧱</div><div class="card-info"><div class="card-name">宝塔面板</div><div class="card-desc">最流行的服务器自动化面板</div></div></a>
-                <a href="https://www.cloudflare.com/" target="_blank" class="card"><div class="card-icon">🛡️</div><div class="card-info"><div class="card-name">Cloudflare</div><div class="card-desc">顶级 CDN 与网络安全防护</div></div></a>
-            </div>
-        </section>
-
-        <section id="security">
-            <div class="section-title">🛡️ 极客安全 (安全与逆向)</div>
-            <div class="grid">
-                <a href="https://www.freebuf.com/" target="_blank" class="card"><div class="card-icon">🛡️</div><div class="card-info"><div class="card-name">FreeBuf</div><div class="card-desc">领先的网络安全门户与新媒体</div></div></a>
-                <a href="https://bbs.kanxue.com/" target="_blank" class="card"><div class="card-icon">❄️</div><div class="card-info"><div class="card-name">看雪论坛</div><div class="card-desc">国内顶尖安全技术与逆向工程</div></div></a>
-                <a href="https://linux.do/" target="_blank" class="card"><div class="card-icon">🐧</div><div class="card-name">Linux.do</div><div class="card-desc">全新的硬核极客交流社区</div></a>
             </div>
         </section>
 
         <section id="life">
-            <div class="section-title">📱 社交生活 (资讯与服务)</div>
+            <div class="section-title">📱 社交与生活</div>
             <div class="grid">
-                <a href="https://www.weibo.com" target="_blank" class="card"><div class="card-icon">📱</div><div class="card-info"><div class="card-name">新浪微博</div><div class="card-desc">实时社交热点与头条发现</div></div></a>
-                <a href="https://www.zhihu.com/" target="_blank" class="card"><div class="card-icon">💭</div><div class="card-info"><div class="card-name">知乎</div><div class="card-desc">高质量的深度问答知识社区</div></div></a>
-                <a href="https://www.xiaohongshu.com/" target="_blank" class="card"><div class="card-icon">📕</div><div class="card-info"><div class="card-name">小红书</div><div class="card-desc">年轻人的潮流生活方式指南</div></div></a>
-                <a href="https://www.12306.cn/" target="_blank" class="card"><div class="card-icon">🚄</div><div class="card-info"><div class="card-name">12306 购票</div><div class="card-desc">官方火车票/高铁票预订入口</div></div></a>
+                <a href="https://www.weibo.com" target="_blank" class="card"><div class="card-icon">📱</div><div class="card-info"><div class="card-name">新浪微博</div><div class="card-desc">实时热点发现与吃瓜前线</div></div></a>
+                <a href="https://www.zhihu.com/" target="_blank" class="card"><div class="card-icon">💭</div><div class="card-info"><div class="card-name">知乎</div><div class="card-desc">高质量的深度问答与干货社区</div></div></a>
+                <a href="https://www.xiaohongshu.com/" target="_blank" class="card"><div class="card-icon">📕</div><div class="card-info"><div class="card-name">小红书</div><div class="card-desc">生活方式分享与购物避坑指南</div></div></a>
+                <a href="https://www.12306.cn/" target="_blank" class="card"><div class="card-icon">🚄</div><div class="card-info"><div class="card-name">12306</div><div class="card-desc">官方火车票/高铁票一键抢票入口</div></div></a>
             </div>
         </section>
 
         <footer>
-            <p>© 2026 小爪导航 | 极简 · 高效 · 智能</p>
+            <p>© 2026 小爪导航 | 万物互联的起点</p>
             <div style="margin-top: 15px; font-size: 0.85em; opacity: 0.8;">
                 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-                <span id="busuanzi_container_site_pv" style="display:none">👁️ 总浏览量 <span id="busuanzi_value_site_pv" style="color:var(--accent); font-weight:bold;"></span> 次</span> | 
+                <span id="busuanzi_container_site_pv" style="display:none">👁️ 全站总浏览量 <span id="busuanzi_value_site_pv" style="color:var(--accent); font-weight:bold;"></span> 次</span> | 
                 <span id="busuanzi_container_site_uv" style="display:none">👤 访客共 <span id="busuanzi_value_site_uv" style="color:var(--accent); font-weight:bold;"></span> 人</span>
             </div>
         </footer>
@@ -253,12 +209,7 @@
             const q = document.getElementById('searchInput').value;
             const engine = document.getElementById('engineSelect').value;
             if (!q) return;
-            const urls = {
-                baidu: 'https://www.baidu.com/s?wd=',
-                google: 'https://www.google.com/search?q=',
-                bing: 'https://www.bing.com/search?q=',
-                github: 'https://github.com/search?q='
-            };
+            const urls = { baidu: 'https://www.baidu.com/s?wd=', google: 'https://www.google.com/search?q=', bing: 'https://www.bing.com/search?q=', github: 'https://github.com/search?q=' };
             window.open(urls[engine] + encodeURIComponent(q));
         }
 
@@ -273,9 +224,7 @@
         const navItems = document.querySelectorAll('.nav-item a');
         window.addEventListener('scroll', () => {
             let current = "";
-            sections.forEach(section => {
-                if (pageYOffset >= section.offsetTop - 100) current = section.getAttribute('id');
-            });
+            sections.forEach(section => { if (pageYOffset >= section.offsetTop - 100) current = section.getAttribute('id'); });
             navItems.forEach(a => {
                 a.classList.remove('active');
                 if (a.getAttribute('href').substring(1) === current) a.classList.add('active');
