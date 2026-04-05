@@ -8,7 +8,7 @@
     <style>
         :root { --sidebar-width: 260px; --sidebar-bg: #121212; --main-bg: #0f172a; --accent: #fbbf24; --card-bg: rgba(30, 41, 59, 0.7); --text-main: #f8fafc; --text-secondary: #94a3b8; }
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { font-family: "Inter", system-ui, sans-serif; background: var(--main-bg); color: var(--text-main); display: flex; min-height: 100vh; overflow-x: hidden; }
+        body { font-family: "Inter", system-ui, sans-serif; background-color: var(--main-bg); color: var(--text-main); display: flex; min-height: 100vh; overflow-x: hidden; }
         aside { width: var(--sidebar-width); height: 100vh; background: var(--sidebar-bg); position: fixed; left: 0; top: 0; z-index: 1000; padding: 40px 0; border-right: 1px solid rgba(255,255,255,0.1); overflow-y: auto; }
         .logo { padding: 0 40px 40px; font-size: 1.4em; font-weight: 800; color: var(--accent); }
         .nav-item a { display: flex; align-items: center; padding: 12px 40px; color: var(--text-secondary); text-decoration: none; font-size: 0.9em; gap: 12px; transition: 0.3s; }
@@ -37,11 +37,13 @@
         <div class="nav-item"><a href="#search">🔍 资源搜刮</a></div>
         <div class="nav-item"><a href="#software">🛠️ 绿化软件</a></div>
         <div class="nav-item"><a href="#video">🎬 影视动漫</a></div>
-        <div class="nav-item"><a href="#vps">☁️ 云端管理</a></div>
+        <div class="nav-item"><a href="#vps">☁️ 云端管理</a></li>
+        <div class="nav-item"><a href="#design">🎨 设计素材</a></div>
+        <div class="nav-item"><a href="#game">🎮 摸鱼游戏</a></div>
         <li class="nav-item"><a href="#security">🛡️ 极客安全</a></li>
         <li class="nav-item"><a href="#life">📱 社交生活</a></li>
     </aside>
-    <nav class="mobile-nav"><a href="#tv">📺直播</a><a href="#ai">🤖AI</a><a href="#search">🔍搜索</a><a href="#video">🎬影视</a><a href="#vps">☁️云服</a></nav>
+    <nav class="mobile-nav"><a href="#tv">直播</a><a href="#ai">AI</a><a href="#search">资源</a><a href="#video">影视</a><a href="#game">摸鱼</a></nav>
     <main>
         <div class="search"><input type="text" placeholder="百度搜索..." onkeydown="if(event.keyCode==13) window.open('https://www.baidu.com/s?wd='+encodeURIComponent(this.value))"></div>
         <section id="tv"><div class="section-title">电视直播资源</div><div class="grid">
@@ -76,7 +78,18 @@
         <section id="vps"><div class="section-title">云端管理运维</div><div class="grid">
             <a href="https://console.cloud.google.com/" target="_blank" class="card"><div class="card-icon">🟠</div><div class="card-name">GCP Console</div></a>
             <a href="https://bwh81.net/" target="_blank" class="card"><div class="card-icon">🧱</div><div class="card-name">搬瓦工 VPS</div></a>
+            <a href="https://www.bt.cn/" target="_blank" class="card"><div class="card-icon">🧱</div><div class="card-name">宝塔面板</div></a>
             <a href="https://www.itdog.cn/" target="_blank" class="card"><div class="card-icon">🐶</div><div class="card-name">ITDOG 测速</div></a>
+        </div></section>
+        <section id="design"><div class="section-title">设计素材图库</div><div class="grid">
+            <a href="https://www.pixiv.net/" target="_blank" class="card"><div class="card-icon">🎨</div><div class="card-name">Pixiv</div></a>
+            <a href="https://unsplash.com/" target="_blank" class="card"><div class="card-icon">📷</div><div class="card-name">Unsplash</div></a>
+            <a href="https://www.iconfont.cn/" target="_blank" class="card"><div class="card-icon">💠</div><div class="card-name">Iconfont</div></a>
+        </div></section>
+        <section id="game"><div class="section-title">在线摸鱼游戏</div><div class="grid">
+            <a href="https://yikm.net/" target="_blank" class="card"><div class="card-icon">🕹️</div><div class="card-name">小霸王街机</div></a>
+            <a href="https://poki.com/zh" target="_blank" class="card"><div class="card-icon">🎮</div><div class="card-name">Poki 游戏</div></a>
+            <a href="https://play2048.co/" target="_blank" class="card"><div class="card-icon">🔢</div><div class="card-name">2048</div></a>
         </div></section>
         <section id="security"><div class="section-title">极客安全社区</div><div class="grid">
             <a href="https://linux.do/" target="_blank" class="card"><div class="card-icon">🐧</div><div class="card-name">Linux.do</div></a>
@@ -87,7 +100,7 @@
             <a href="https://www.zhihu.com/" target="_blank" class="card"><div class="card-icon">💭</div><div class="card-name">知乎</div></a>
             <a href="https://www.12306.cn/" target="_blank" class="card"><div class="card-icon">🚄</div><div class="card-name">12306</div></a>
         </div></section>
-        <footer style="text-align:center;padding:40px;color:var(--text-secondary);opacity:0.5">© 2026 小爪导航 | 终极补全版</footer>
+        <footer style="text-align:center;padding:40px;color:var(--text-secondary);opacity:0.5">© 2026 小爪导航 | 狂暴内容版 16.0</footer>
     </main>
     <script>
         function updateTime() { document.getElementById('time').textContent = new Date().toLocaleTimeString('zh-CN', { hour12: false }); }
