@@ -3,112 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小爪导航 - 全网资源博物馆</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+    <title>小爪导航 - 终极全能全量版</title>
     <style>
-        :root { --sidebar-width: 220px; --sidebar-bg: #121212; --main-bg: #0f172a; --accent: #fbbf24; --card-bg: rgba(30, 41, 59, 0.6); --card-border: rgba(255, 255, 255, 0.08); --text-main: #f8fafc; --text-secondary: #94a3b8; }
+        :root { --sidebar-bg: #121212; --main-bg: #0f172a; --accent: #fbbf24; --card-bg: rgba(30, 41, 59, 0.7); --text-main: #f8fafc; }
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { font-family: "Inter", "PingFang SC", sans-serif; background: var(--main-bg); color: var(--text-main); display: flex; min-height: 100vh; overflow-x: hidden; }
-        aside { width: var(--sidebar-width); height: 100vh; background: var(--sidebar-bg); position: fixed; left: 0; top: 0; z-index: 1000; padding: 30px 0; border-right: 1px solid var(--card-border); overflow-y: auto; }
-        .logo { padding: 0 30px 30px; font-size: 1.3em; font-weight: 800; color: var(--accent); }
-        .nav-item a { display: flex; align-items: center; padding: 12px 30px; color: var(--text-desc); text-decoration: none; font-size: 0.85em; gap: 10px; }
-        .nav-item a:hover, .nav-item a.active { color: #fff; background: rgba(255,255,255,0.05); border-left: 4px solid var(--accent); }
-        main { flex: 1; margin-left: 220px; padding: 40px 60px; }
-        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
-        .search { background: var(--card-bg); border-radius: 15px; padding: 12px 25px; width: 100%; max-width: 500px; border: 1px solid var(--card-border); }
-        .search input { background: transparent; border: none; color: #fff; width: 100%; outline: none; }
-        section { margin-bottom: 60px; scroll-margin-top: 20px; }
-        .section-title { font-size: 1.2em; font-weight: 700; margin-bottom: 25px; display: flex; align-items: center; gap: 10px; color: #cbd5e1; }
-        .section-title::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
-        .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 12px 15px; display: flex; align-items: center; text-decoration: none; color: #fff; }
-        .card-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; font-size: 1.1em; margin-right: 12px; flex-shrink: 0; }
-        .card-name { font-weight: 600; font-size: 0.85em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        @media (max-width: 1024px) { aside { display: none; } main { margin-left: 0; padding: 20px; } }
-        footer { text-align:center;padding:40px;color:var(--text-secondary);opacity:0.5;font-size:0.8em; }
+        body { font-family: sans-serif; background: var(--main-bg); color: var(--text-main); display: flex; min-height: 100vh; }
+        aside { width: 200px; height: 100vh; background: var(--sidebar-bg); position: fixed; left: 0; top: 0; padding: 20px 0; border-right: 1px solid rgba(255,255,255,0.1); overflow-y: auto; }
+        .logo { padding: 0 20px 20px; font-weight: 800; color: var(--accent); }
+        .nav-item a { display: block; padding: 10px 20px; color: #94a3b8; text-decoration: none; font-size: 0.85em; }
+        .nav-item a:hover { color: #fff; background: rgba(255,255,255,0.05); }
+        main { flex: 1; margin-left: 200px; padding: 30px; }
+        section { margin-bottom: 40px; scroll-margin-top: 20px; }
+        .stitle { font-size: 1.1em; font-weight: 700; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+        .card { background: var(--card-bg); border-radius: 10px; padding: 12px; display: flex; align-items: center; text-decoration: none; color: #fff; border: 1px solid rgba(255,255,255,0.1); font-size: 0.85em; }
+        .card:hover { border-color: var(--accent); background: rgba(45, 55, 72, 0.8); }
+        .icon { margin-right: 10px; font-size: 1.2em; }
+        @media (max-width: 900px) { aside { display: none; } main { margin-left: 0; } .grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); } }
     </style>
 </head>
 <body>
-    <aside id="sidebar">
-        <div class="logo">🐾 <span>小爪导航</span></div>
-        <ul class="nav-list">
-            <li class="nav-item"><a href="#tv" class="active">📺 电视直播</a></li>
-            <li class="nav-item"><a href="#apps">📱 软件下载</a></li>
-            <li class="nav-item"><a href="#ai">🤖 AI 智能</a></li>
-            <li class="nav-item"><a href="#search">🔍 资源搜索</a></li>
-            <li class="nav-item"><a href="#software">🛠️ 绿化软件</a></li>
-            <li class="nav-item"><a href="#video">🎬 影视追剧</a></li>
-            <li class="nav-item"><a href="#vps">☁️ 云端运维</a></li>
-            <li class="nav-item"><a href="#design">🎨 设计图库</a></li>
-            <li class="nav-item"><a href="#security">🛡️ 极客安全</a></li>
-            <li class="nav-item"><a href="#life">📱 社交生活</a></li>
-        </ul>
+    <aside>
+        <div class="logo">🐾 小爪导航</div>
+        <div class="nav-item"><a href="#tv">📺 电视直播</a></div>
+        <div class="nav-item"><a href="#apps">📱 软件下载</a></div>
+        <div class="nav-item"><a href="#ai">🤖 人工智能</a></div>
+        <div class="nav-item"><a href="#search">🔍 资源搜索</a></div>
+        <div class="nav-item"><a href="#software">🛠️ 绿化软件</a></div>
+        <div class="nav-item"><a href="#video">🎬 影视追剧</a></div>
+        <div class="nav-item"><a href="#vps">☁️ 云端运维</a></div>
+        <div class="nav-item"><a href="#design">🎨 设计图库</a></div>
+        <div class="nav-item"><a href="#security">🛡️ 极客安全</a></div>
+        <div class="nav-item"><a href="#life">📱 社交生活</a></div>
     </aside>
     <main>
-        <header><div class="search"><input type="text" placeholder="全网搜索..." onkeydown="if(event.keyCode==13) window.open('https://www.baidu.com/s?wd='+encodeURIComponent(this.value))"></div><div id="time" style="color:var(--accent); font-weight:600;">00:00</div></header>
-        <div id="content-pool">
-            <!-- 骨架部分开始 -->
-            <section id="tv"><div class="section-title">📺 电视直播与论坛</div><div class="grid" id="tv-items">
-                <a href="tv.m3u" download class="card" style="border:1px solid var(--accent)"><div class="card-icon">📥</div><div class="card-name">下载 M3U 列表</div></a>
-                <a href="https://www.right.com.cn/forum/forum-48-1.html" target="_blank" class="card"><div class="card-icon">📡</div><div class="card-name">恩山 IPTV 论坛</div></a>
-                <a href="https://www.yangshipin.cn/" target="_blank" class="card"><div class="card-icon">🇨🇳</div><div class="card-name">央视频 4K</div></a>
-            </div></section>
-            <section id="apps"><div class="section-title">📱 精品软件下载 (APK)</div><div class="grid" id="apps-items">
-                <a href="apps/DongYuTv.apk" download class="card"><div class="card-icon">📺</div><div class="card-name">东娱电视 V1</div></a>
-                <a href="apps/DongYuTv_v2.apk" download class="card"><div class="card-icon">📽️</div><div class="card-name">东娱电视 V2</div></a>
-            </div></section>
-            <section id="ai"><div class="section-title">🤖 人工智能集群</div><div class="grid" id="ai-items">
-                <a href="https://chat.deepseek.com" target="_blank" class="card"><div class="card-icon">🔮</div><div class="card-name">DeepSeek V3</div></a>
-                <a href="https://chat.openai.com" target="_blank" class="card"><div class="card-icon">🤖</div><div class="card-name">ChatGPT 4o</div></a>
-                <a href="https://claude.ai" target="_blank" class="card"><div class="card-icon">🧠</div><div class="card-name">Claude 3.5</div></a>
-                <a href="https://kimi.moonshot.cn/" target="_blank" class="card"><div class="card-icon">🌙</div><div class="card-name">Kimi.ai</div></a>
-            </div></section>
-            <section id="search"><div class="section-title">🔍 全网资源搜刮</div><div class="grid" id="search-items">
-                <a href="https://www.alipansou.com/" target="_blank" class="card"><div class="card-icon">☁️</div><div class="card-name">阿里盘搜</div></a>
-                <a href="https://www.pansearch.me/" target="_blank" class="card"><div class="card-icon">🔍</div><div class="card-name">PanSearch</div></a>
-                <a href="https://ciligou.app/" target="_blank" class="card"><div class="card-icon">🐕</div><div class="card-name">磁力狗</div></a>
-            </div></section>
-            <section id="software"><div class="section-title">🛠️ 绿化软件下载</div><div class="grid" id="software-items">
-                <a href="https://macwk.com/" target="_blank" class="card"><div class="card-icon">🍏</div><div class="card-name">MacWK</div></a>
-                <a href="https://www.ghxi.com/" target="_blank" class="card"><div class="card-icon">🌰</div><div class="card-name">果核剥壳</div></a>
-            </div></section>
-            <section id="video"><div class="section-title">🎬 影视动漫视频</div><div class="grid" id="video-items">
-                <a href="https://www.bilibili.com" target="_blank" class="card"><div class="card-icon">📺</div><div class="card-name">哔哩哔哩</div></a>
-                <a href="https://dsxys.pro/" target="_blank" class="card"><div class="card-icon">🎬</div><div class="card-name">大师兄影视</div></a>
-                <a href="https://www.agedm.org/" target="_blank" class="card"><div class="card-icon">👺</div><div class="card-name">AGE 动漫</div></a>
-            </div></section>
-            <section id="vps"><div class="section-title">☁️ 云端管理运维</div><div class="grid" id="vps-items">
-                <a href="https://console.cloud.google.com/" target="_blank" class="card"><div class="card-icon">🟠</div><div class="card-name">GCP Console</div></a>
-                <a href="https://bwh81.net/" target="_blank" class="card"><div class="card-icon">🧱</div><div class="card-name">搬瓦工 VPS</div></a>
-                <a href="https://www.cloudflare.com/" target="_blank" class="card"><div class="card-icon">🛡️</div><div class="card-name">Cloudflare</div></a>
-                <a href="https://www.itdog.cn/" target="_blank" class="card"><div class="card-icon">🐶</div><div class="card-name">ITDOG 测速</div></a>
-            </div></section>
-            <section id="design"><div class="section-title">🎨 设计素材图库</div><div class="grid" id="design-items">
-                <a href="https://www.pixiv.net/" target="_blank" class="card"><div class="card-icon">🎨</div><div class="card-name">Pixiv</div></a>
-                <a href="https://unsplash.com/" target="_blank" class="card"><div class="card-icon">📷</div><div class="card-name">Unsplash</div></a>
-                <a href="https://www.iconfont.cn/" target="_blank" class="card"><div class="card-icon">💠</div><div class="card-name">Iconfont</div></a>
-            </div></section>
-            <section id="security"><div class="section-title">🛡️ 极客安全社区</div><div class="grid" id="security-items">
-                <a href="https://linux.do/" target="_blank" class="card"><div class="card-icon">🐧</div><div class="card-name">Linux.do</div></a>
-                <a href="https://bbs.kanxue.com/" target="_blank" class="card"><div class="card-icon">❄️</div><div class="card-name">看雪论坛</div></a>
-            </div></section>
-            <section id="life"><div class="section-title">社交生活资讯</div><div class="grid" id="life-items">
-                <a href="https://weibo.com" target="_blank" class="card"><div class="card-icon">📱</div><div class="card-name">新浪微博</div></a>
-                <a href="https://www.zhihu.com/" target="_blank" class="card"><div class="card-icon">💭</div><div class="card-name">知乎</div></a>
-                <a href="https://www.12306.cn/" target="_blank" class="card"><div class="card-icon">🚄</div><div class="card-name">12306</div></a>
-            </div></section>
-            <!-- 骨架部分结束 -->
-        </div>
-        <footer>© 2026 小爪导航 | 骨架稳固版</footer>
+        <section id="tv"><div class="stitle">📺 电视直播与论坛</div><div class="grid">
+            <a href="tv.m3u" download class="card"><span class="icon">📥</span>M3U 下载</a>
+            <a href="https://www.right.com.cn/forum/forum-48-1.html" class="card"><span class="icon">📡</span>恩山 IPTV</a>
+            <a href="https://www.yangshipin.cn/" class="card"><span class="icon">🇨🇳</span>央视频</a>
+        </div></section>
+        
+        <section id="apps"><div class="stitle">📱 精品软件下载</div><div class="grid">
+            <a href="apps/DongYuTv.apk" class="card"><span class="icon">📺</span>东娱 V1</a>
+            <a href="apps/DongYuTv_v2.apk" class="card"><span class="icon">📽️</span>东娱 V2</a>
+        </div></section>
+
+        <section id="ai"><div class="stitle">🤖 人工智能集群</div><div class="grid">
+            <a href="https://chat.deepseek.com" class="card"><span class="icon">🔮</span>DeepSeek</a>
+            <a href="https://chat.openai.com" class="card"><span class="icon">🤖</span>ChatGPT</a>
+            <a href="https://claude.ai" class="card"><span class="icon">🧠</span>Claude</a>
+            <a href="https://kimi.moonshot.cn/" class="card"><span class="icon">🌙</span>Kimi.ai</a>
+            <a href="https://metaso.cn/" class="card"><span class="icon">🔍</span>秘塔搜索</a>
+            <a href="https://suno.com/" class="card"><span class="icon">🎵</span>Suno AI</a>
+        </div></section>
+
+        <section id="search"><div class="stitle">🔍 全网资源搜刮</div><div class="grid">
+            <a href="https://www.alipansou.com/" class="card"><span class="icon">☁️</span>阿里盘搜</a>
+            <a href="https://www.pansearch.me/" class="card"><span class="icon">🔍</span>PanSearch</a>
+            <a href="https://z-lib.org/" class="card"><span class="icon">📚</span>Z-Library</a>
+            <a href="https://ciligou.app/" class="card"><span class="icon">🐕</span>磁力狗</a>
+            <a href="https://www.jiumodiary.com/" class="card"><span class="icon">📖</span>鸠摩搜书</a>
+        </div></section>
+
+        <section id="software"><div class="stitle">🛠️ 绿化软件下载</div><div class="grid">
+            <a href="https://macwk.com/" class="card"><span class="icon">🍏</span>MacWK</a>
+            <a href="https://www.ghxi.com/" class="card"><span class="icon">🌰</span>果核剥壳</a>
+            <a href="https://www.sysin.org/" class="card"><span class="icon">📀</span>SYSIN</a>
+        </div></section>
+
+        <section id="video"><div class="stitle">🎬 影视动漫视频</div><div class="grid">
+            <a href="https://www.bilibili.com" class="card"><span class="icon">📺</span>哔哩哔哩</a>
+            <a href="https://dsxys.pro/" class="card"><span class="icon">🎬</span>大师兄影视</a>
+            <a href="https://www.agedm.org/" class="card"><span class="icon">👺</span>AGE 动漫</a>
+            <a href="https://yhdm.nl/" class="card"><span class="icon">🌸</span>樱花动漫</a>
+            <a href="https://www.nivod.tv/" class="card"><span class="icon">泥</span>泥巴影院</a>
+        </div></section>
+
+        <section id="vps"><div class="stitle">☁️ 云端管理运维</div><div class="grid">
+            <a href="https://console.cloud.google.com/" class="card"><span class="icon">🟠</span>GCP</a>
+            <a href="https://bwh81.net/" class="card"><span class="icon">🧱</span>搬瓦工</a>
+            <a href="https://www.cloudflare.com/" class="card"><span class="icon">🛡️</span>Cloudflare</a>
+            <a href="https://www.itdog.cn/" class="card"><span class="icon">🐶</span>ITDOG</a>
+            <a href="https://www.bt.cn/" class="card"><span class="icon">🧱</span>宝塔面板</a>
+        </div></section>
+
+        <section id="design"><div class="stitle">🎨 设计素材图库</div><div class="grid">
+            <a href="https://www.pixiv.net/" class="card"><span class="icon">🎨</span>Pixiv</a>
+            <a href="https://unsplash.com/" class="card"><span class="icon">📷</span>Unsplash</a>
+            <a href="https://www.iconfont.cn/" class="card"><span class="icon">💠</span>Iconfont</a>
+        </div></section>
+
+        <section id="security"><div class="stitle">🛡️ 极客安全社区</div><div class="grid">
+            <a href="https://linux.do/" class="card"><span class="icon">🐧</span>Linux.do</a>
+            <a href="https://bbs.kanxue.com/" class="card"><span class="icon">❄️</span>看雪论坛</a>
+        </div></section>
+
+        <section id="life"><div class="stitle">📱 社交生活资讯</div><div class="grid">
+            <a href="https://weibo.com" class="card"><span class="icon">📱</span>新浪微博</a>
+            <a href="https://www.zhihu.com/" class="card"><span class="icon">💭</span>知乎</a>
+            <a href="https://www.12306.cn/" class="card"><span class="icon">🚄</span>12306</a>
+        </div></section>
+
+        <footer style="text-align:center;padding:20px;opacity:0.5;font-size:0.8em">© 2026 小爪导航 | 终极补全版</footer>
     </main>
-    <script>
-        function updateTime() { document.getElementById('time').textContent = new Date().toLocaleTimeString('zh-CN', { hour12: false }); }
-        setInterval(updateTime, 1000); updateTime();
-        const navLinks = document.querySelectorAll('.nav-item a');
-        window.addEventListener('scroll', () => {
-            let curr = ""; document.querySelectorAll('section').forEach(s => { if (pageYOffset >= s.offsetTop - 100) curr = s.getAttribute('id'); });
-            navLinks.forEach(a => { a.classList.remove('active'); if (a.getAttribute('href').substring(1) === curr) a.classList.add('active'); });
-        });
-    </script>
 </body>
 </html>
