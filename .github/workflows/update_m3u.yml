@@ -22,7 +22,7 @@ jobs:
       run: pip install pytz
 
     - name: 运行更新脚本
-      run: python update_tv.py
+      run: python .github/workflows/update_tv.py
 
     - name: 提交并推送到网站仓库
       run: |
