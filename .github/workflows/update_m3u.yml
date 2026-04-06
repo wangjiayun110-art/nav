@@ -1,0 +1,32 @@
+name: 自动更新电视直播源
+
+on:
+  schedule:
+    - cron: '0 22 * * *'
+  workflow_dispatch: 
+
+jobs:
+  update-m3u:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v3
+
+    - name: 设置 Python 环境
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: 安装必要的库
+      run: pip install pytz
+
+    - name: 运行更新脚本
+      run: python update_tv.py
+
+    - name: 提交并推送到网站仓库
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add tv.m3u
+        git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 自动更新 tv.m3u 直播源" && git push)
